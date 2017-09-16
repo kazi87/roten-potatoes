@@ -15,10 +15,10 @@ import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.ResponseHandler;
 import org.apache.http.client.methods.HttpPost;
@@ -31,20 +31,21 @@ import java.io.UnsupportedEncodingException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 
 import rotenpotatoes.hackzurich.com.inventoryapp.data.GeoInventory;
 import rotenpotatoes.hackzurich.com.inventoryapp.data.Item;
-import rotenpotatoes.hackzurich.com.inventoryapp.data.InventoryDB;
+import rotenpotatoes.hackzurich.com.inventoryapp.data.MockInventoryDB;
 
 public class MainActivity extends AppCompatActivity {
 
-    private final InventoryDB inventoryDB = new InventoryDB();
+    private final MockInventoryDB mockInventoryDB = new MockInventoryDB();
     private GeoInventory geoInv;
     private DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
 
 
-//    private TextView mTextMessage;
+    private TextView mUserTextMessage;
+    private TextView mLatTextMessage;
+    private TextView mLatLngTextMessage;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -52,13 +53,16 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
-                case R.id.navigation_home:
-                    postData();
-//                    Toast.makeText(getBaseContext(), "", 121);
+                case R.id.random_inventory:
+                    randomInventory();
+                    finish();
+                    startActivity(getIntent());
                     return true;
                 case R.id.navigation_dashboard:
                     return true;
                 case R.id.navigation_notifications:
+                    postData();
+                    Toast.makeText(getBaseContext(), "Data has been uploaded to server...", 121);
                     return true;
             }
             return false;
@@ -94,12 +98,7 @@ public class MainActivity extends AppCompatActivity {
                     httpost.setHeader("Content-type", "application/json");
 
                     //Handles what is returned from the page
-                    ResponseHandler responseHandler = new ResponseHandler() {
-                        @Override
-                        public Object handleResponse(HttpResponse httpResponse) throws ClientProtocolException, IOException {
-                            return null;
-                        }
-                    };
+                    ResponseHandler responseHandler = new BasicResponseHandler();
                     Object response = httpclient.execute(httpost, responseHandler);
 
                     Log.i("REST", "Data: " + response);
@@ -120,7 +119,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         final ListView listview = (ListView) findViewById(R.id.articlesListView);
-        geoInv = inventoryDB.getGeoInventory(46.766206, 8.085938);
+
+        randomInventory();
 
         final ListAdapter adapter = new ArrayAdapter(this,
                 android.R.layout.simple_list_item_1, geoInv.getItems()) {
@@ -160,6 +160,11 @@ public class MainActivity extends AppCompatActivity {
 //        mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+    }
+
+    private void randomInventory() {
+        geoInv = mockInventoryDB.getGeoInventory(46.766206, 8.085938);
+        geoInv.setTimestamp(new Date().getTime());
     }
 
 }
