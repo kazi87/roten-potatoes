@@ -41,10 +41,40 @@ public class InventoryService {
     //private static final int PAST_LOOKUP = 2000;
     private static final long PAST_LOOKUP = 900000000;
     
-    //Hacky database 
+     //Hacky database 
     private static ArrayList<HashMapStamped> inventory_history = new ArrayList<HashMapStamped>();
     private static ArrayList<String> tags = new ArrayList<String>();
     private static HashMap<String, String> food2tags = new HashMap<String, String>();
+    
+    public InventoryService(){
+        GeoInventory geoInventory = new GeoInventory();
+        geoInventory.setLat(47.376887);
+        geoInventory.setLng(8.541694);
+
+        Item item = new Item();
+        item.setName("potato");
+        item.setQuantity(1.3);
+        item.setUnit("kg");
+
+        Item item2 = new Item();
+        item2.setName("milk");
+        item2.setQuantity(1);
+        item2.setUnit("liter");
+
+        Item item3 = new Item();
+        item3.setName("butter");
+        item3.setQuantity(250);
+        item3.setUnit("grams");
+
+        geoInventory.setItems(Arrays.asList(item, item2, item3));
+        long timestamp = new Date().getTime();
+        geoInventory.setTimestamp(timestamp-1);
+        
+
+        processInputData(geoInventory);
+    }
+    
+   
     
  
     
