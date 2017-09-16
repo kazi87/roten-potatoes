@@ -17,7 +17,7 @@ public class HashMapStamped {
     private long timestamp;
     private double lat;
     private double lng;
-    private HashMap<String, ArrayList<Item>> map;
+    private HashMap<String, ArrayList<Item>> map= new HashMap<String, ArrayList<Item>>();
 
     /**
      * @return the timestamp

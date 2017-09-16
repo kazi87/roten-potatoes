@@ -43,7 +43,7 @@ public class InventoryService {
     //Hacky database 
     ArrayList<HashMapStamped> inventory_history = new ArrayList<HashMapStamped>();
     ArrayList<String> tags = new ArrayList<String>();
-    HashMap<String, ArrayList<String>> food2tags = new HashMap<String, ArrayList<String>>();
+    HashMap<String, String> food2tags = new HashMap<String, String>();
     
  
     
@@ -99,66 +99,92 @@ public class InventoryService {
             Logger.getLogger(InventoryService.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        System.out.println("food2tags is " + food2tags);
-        System.out.println("tags is " + tags);
+        //System.out.println("food2tags is " + food2tags);
+        //System.out.println("tags is " + tags);
         
         HashMapStamped map = new HashMapStamped();
         
         //initialize the map  (TODO not completely efficient because we still have in the map the empty tags)
-        System.out.println("tags size is" + tags.size());
+        //System.out.println("tags size is" + tags.size());
         for(int i=0; i<tags.size(); i++){
-            System.out.println("putting empty array in");
-            //map.getMap().put(tags.get(i), new ArrayList<Item>());
-            System.out.println("finished empty array in");
+            //System.out.println("putting empty array in");
+            //System.out.println("tags at i is " + tags.get(i));
+            //System.out.println("booom");
+            //System.out.println("map si " + map.getMap());
+            map.getMap().put(tags.get(i), new ArrayList<Item>());
+            //System.out.println("finished empty array in");
         }
         
         
-        System.out.println("map is" +map);
+        //System.out.println("map is" +map.getMap());
         
         //for every item in the inventory 
             //get the labels for the item 
             //add it to the corresponding key in the map 
         
+        //System.out.println("inventory get items is " + inventory.getItems());
         for(int i=0; i<inventory.getItems().size(); i++){
               Item item =inventory.getItems().get(i);
-              ArrayList<String> item_tags= food2tags.get(item.getName());
+              //System.out.println("food2tags is " +food2tags);
+              String item_tag= food2tags.get(item.getName());
               //for each one of those tags, add that item to the map under the corresponding tag 
-              for(int j=1; j<item_tags.size(); j++){
-                 map.getMap().get(item_tags.get(j)).add(item); 
-              }
+              //System.out.println("loop over inventory");
+              //System.out.println("item is " + item);
+              //System.out.println("item_tag is " + item_tag);
+              //System.out.println("map is" + map.getMap());
+              //System.out.println("item_tags has size" + item_tags.size());
+              map.getMap().get(item_tag).add(item); 
+              
+              //System.out.println("adding the name itself");
+              
               //also add the name itself as its own category
-               map.getMap().get(item.getName()).add(item); 
+              ArrayList<Item> items_dummy= new ArrayList<Item>();
+              items_dummy.add(item);
+              map.getMap().put(item.getName(),items_dummy); 
         }
         
-        System.out.println("map is" +map);
+        //System.out.println("map is" +map.getMap());
         
         
         map.setTimestamp(inventory.getTimestamp());
         
-        System.out.println("map is" +map);
+        System.out.println("last map is" +map.getMap());
         
         return map;
     }
     
     public void processInputData(GeoInventory inventory) {
         //  HERE DO THE MAGIC WITH DATA - create a map, reverse map, etc...
+        
+        System.out.println("entering process input data");
         HashMapStamped map= inventory2map(inventory);
         if (inventory_history.isEmpty()){
+            System.out.println("adding to empty map");
             inventory_history.add(map);
+            System.out.println("added to empty map");
         }else{
             //insert in sortd inventory by time 
+            System.out.println("adding to partil map");
             inventory_history.add(map);
+            System.out.println("sorting");
             Collections.sort(inventory_history, new TimestampComparer());
         }        
-        
+        System.out.println("finished");
+        assert(true);
     }
 
     public Response getInventory(String category, long timestamp) {
         //  HERE WE SHOULD READ DATA FROM THE CACHE/MAP
         
+        System.out.println("get inverotry enter");
         Response inventory = new Response();
         inventory.setTimestamp(new Date(timestamp));
         List<GeoInventory> geoInv = new ArrayList<>();
+        
+        if (inventory_history.isEmpty()){
+            return inventory;
+        }
+
         
         //get items from that category and x in time back
         long last_timestamp=inventory_history.get(inventory_history.size() - 1).getTimestamp();
@@ -173,7 +199,7 @@ public class InventoryService {
                 geoInventory.setLat(map.getLat());
                 geoInventory.setLng(map.getLng());
                 
-                for(int i=1; i<items_in_category.size(); i++){
+                for(int i=0; i<items_in_category.size(); i++){
                     Item item = new Item();
                     item.setName(items_in_category.get(i).getName());
                     item.setQuantity(items_in_category.get(i).getQuantity());
