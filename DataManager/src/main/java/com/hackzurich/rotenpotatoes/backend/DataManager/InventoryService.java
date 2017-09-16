@@ -38,12 +38,13 @@ class TimestampComparer implements Comparator<HashMapStamped> {
 }
 
 public class InventoryService {
-    private static final int PAST_LOOKUP = 2000;
+    //private static final int PAST_LOOKUP = 2000;
+    private static final long PAST_LOOKUP = 900000000;
     
     //Hacky database 
-    ArrayList<HashMapStamped> inventory_history = new ArrayList<HashMapStamped>();
-    ArrayList<String> tags = new ArrayList<String>();
-    HashMap<String, String> food2tags = new HashMap<String, String>();
+    private static ArrayList<HashMapStamped> inventory_history = new ArrayList<HashMapStamped>();
+    private static ArrayList<String> tags = new ArrayList<String>();
+    private static HashMap<String, String> food2tags = new HashMap<String, String>();
     
  
     
@@ -169,22 +170,29 @@ public class InventoryService {
             System.out.println("sorting");
             Collections.sort(inventory_history, new TimestampComparer());
         }        
-        System.out.println("finished");
+        System.out.println("finished: " + inventory_history.size());
         assert(true);
     }
 
     public Response getInventory(String category, long timestamp) {
         //  HERE WE SHOULD READ DATA FROM THE CACHE/MAP
         
-        System.out.println("get inverotry enter");
+        //System.out.println("get inverotry enter");
         Response inventory = new Response();
         inventory.setTimestamp(new Date(timestamp));
         List<GeoInventory> geoInv = new ArrayList<>();
+        
+         System.out.println("inventory history in gt inventory has size " + inventory_history.size());
         
         if (inventory_history.isEmpty()){
             return inventory;
         }
 
+        System.out.println("inventory history" + inventory_history);
+        for (int i = 0; i < inventory_history.size(); i++) {
+            System.out.println("timestamp is" + inventory_history.get(i).getTimestamp());
+        }
+       
         
         //get items from that category and x in time back
         long last_timestamp=inventory_history.get(inventory_history.size() - 1).getTimestamp();

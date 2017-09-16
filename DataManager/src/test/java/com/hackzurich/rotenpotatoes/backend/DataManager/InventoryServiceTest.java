@@ -6,8 +6,11 @@ import java.util.Date;
 import com.hackzurich.rotenpotatoes.backend.data.GeoInventory;
 import com.hackzurich.rotenpotatoes.backend.data.Item;
 import com.hackzurich.rotenpotatoes.backend.data.Response;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 /**
@@ -15,10 +18,10 @@ import org.junit.Test;
  */
 public class InventoryServiceTest {
 
-    private InventoryService inventoryService;
+    private static InventoryService inventoryService;
 
-    @Before
-    public void setUp() {
+    @BeforeClass
+    public static void setUp() {
         inventoryService = new InventoryService();
     }
 
@@ -44,18 +47,19 @@ public class InventoryServiceTest {
         item3.setUnit("grams");
 
         geoInventory.setItems(Arrays.asList(item, item2, item3));
+        long timestamp = new Date().getTime();
+        geoInventory.setTimestamp(timestamp-1);
+        
 
         inventoryService.processInputData(geoInventory);
-    }
-
-    @Test
-    public void getInventory() throws Exception {
+        
         String category = "potato";
-        long timestamp = new Date().getTime();
+        timestamp = new Date().getTime();
 
         Response result = inventoryService.getInventory(category, timestamp);
 
         System.out.println(result);
     }
 
+   
 }
