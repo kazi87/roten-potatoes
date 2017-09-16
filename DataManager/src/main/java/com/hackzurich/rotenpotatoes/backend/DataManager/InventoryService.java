@@ -67,7 +67,7 @@ public class InventoryService {
         item3.setUnit("grams");
 
         geoInventory.setItems(Arrays.asList(item, item2, item3));
-        long timestamp = new Date().getTime();
+        long timestamp = (long) (new Date().getTime()/1000.0);
         geoInventory.setTimestamp(timestamp-1);
         
 
@@ -209,7 +209,7 @@ public class InventoryService {
         
         //System.out.println("get inverotry enter");
         Response inventory = new Response();
-        inventory.setTimestamp(new Date(timestamp));
+        inventory.setTimestamp( timestamp);
         List<GeoInventory> geoInv = new ArrayList<>();
         
          System.out.println("inventory history in gt inventory has size " + inventory_history.size());
@@ -253,6 +253,9 @@ public class InventoryService {
         }
         
         inventory.setGeoInventories(geoInv);
+        
+        System.out.println("returning inventory: " + inventory );
+        System.out.println("returning inventory with timestamp: " + inventory.getTimestamp());
         
         return inventory;
         

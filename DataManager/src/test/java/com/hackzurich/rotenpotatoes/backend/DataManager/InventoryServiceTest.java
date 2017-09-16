@@ -47,14 +47,14 @@ public class InventoryServiceTest {
         item3.setUnit("grams");
 
         geoInventory.setItems(Arrays.asList(item, item2, item3));
-        long timestamp = new Date().getTime();
+        long timestamp = (long) (new Date().getTime()/1000.0);
         geoInventory.setTimestamp(timestamp-1);
         
 
         inventoryService.processInputData(geoInventory);
         
         String category = "potato";
-        timestamp = new Date().getTime();
+        timestamp = (long) (new Date().getTime()/1000.0);
 
         Response result = inventoryService.getInventory(category, timestamp);
 
