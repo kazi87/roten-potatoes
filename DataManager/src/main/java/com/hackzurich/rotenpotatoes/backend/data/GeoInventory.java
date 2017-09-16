@@ -9,6 +9,7 @@ public class GeoInventory {
 
     private double lat;
     private double lng;
+    private long timestamp;
     private List<Item> items;
 
     public double getLat() {
@@ -34,6 +35,15 @@ public class GeoInventory {
     public void setItems(List<Item> items) {
         this.items = items;
     }
+    
+    public long getTimestamp(){
+        return timestamp;
+    }
+    
+    public void setTimestamp(long timestamp_){
+        this.timestamp=timestamp_;
+    }
+    
 
     @Override
     public String toString() {
