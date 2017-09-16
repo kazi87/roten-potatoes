@@ -6,6 +6,7 @@ import java.util.Date;
 import com.hackzurich.rotenpotatoes.backend.data.GeoInventory;
 import com.hackzurich.rotenpotatoes.backend.data.Item;
 import com.hackzurich.rotenpotatoes.backend.data.Response;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -46,7 +47,11 @@ public class InventoryServiceTest {
         item3.setQuantity(250);
         item3.setUnit("grams");
 
-        geoInventory.setItems(Arrays.asList(item, item2, item3));
+        ArrayList<Item> items_list = new ArrayList<Item>();
+        items_list.add (item);
+        items_list.add (item2);
+        items_list.add (item3);
+        geoInventory.setItems(items_list);
         long timestamp = (long) (new Date().getTime()/1000.0);
         geoInventory.setTimestamp(timestamp-1);
         

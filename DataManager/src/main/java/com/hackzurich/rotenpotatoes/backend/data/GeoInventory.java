@@ -1,5 +1,6 @@
 package com.hackzurich.rotenpotatoes.backend.data;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -10,7 +11,7 @@ public class GeoInventory {
     private double lat;
     private double lng;
     private long timestamp;
-    private List<Item> items;
+    private ArrayList<Item> items=new ArrayList<Item>();
 
     public double getLat() {
         return lat;
@@ -32,7 +33,7 @@ public class GeoInventory {
         return items;
     }
 
-    public void setItems(List<Item> items) {
+    public void setItems(ArrayList<Item> items) {
         this.items = items;
     }
     

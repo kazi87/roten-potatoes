@@ -66,7 +66,11 @@ public class InventoryService {
         item3.setQuantity(250);
         item3.setUnit("grams");
 
-        geoInventory.setItems(Arrays.asList(item, item2, item3));
+        ArrayList<Item> items_list = new ArrayList<Item>();
+        items_list.add (item);
+        items_list.add (item2);
+        items_list.add (item3);
+        geoInventory.setItems(items_list);
         long timestamp = (long) (new Date().getTime()/1000.0);
         geoInventory.setTimestamp(timestamp-1);
         
@@ -226,11 +230,20 @@ public class InventoryService {
         
         //get items from that category and x in time back
         long last_timestamp=inventory_history.get(inventory_history.size() - 1).getTimestamp();
-        for(int t=(int) last_timestamp; t>Math.min(last_timestamp-PAST_LOOKUP,0); t--){
+        int last_index= inventory_history.size() - 1;
+        for(int t= last_index; t>0; t--){
+           
+            if ( (last_timestamp - inventory_history.get(t).getTimestamp()) > PAST_LOOKUP ){
+               break;
+            }
+            
+            
           //at that point in the history we have a fridge
             //check all its items that match the category and put in the response 
             HashMapStamped map=inventory_history.get(t);
             ArrayList<Item> items_in_category= map.getMap().get(category);
+            
+            System.out.println("items in category is" + items_in_category);
             
             if (!items_in_category.isEmpty()){
                 GeoInventory geoInventory = new GeoInventory();
@@ -242,6 +255,7 @@ public class InventoryService {
                     item.setName(items_in_category.get(i).getName());
                     item.setQuantity(items_in_category.get(i).getQuantity());
                     item.setUnit(items_in_category.get(i).getUnit());
+                    System.out.println("item is " + item);
                     geoInventory.appendItem(item);
                 }
                 geoInv.add(geoInventory);
