@@ -7,6 +7,7 @@ import java.util.List;
  */
 
 public class GeoInventory {
+    private long timestamp;
     private double lat;
     private double lng;
     private List<Item> items;
@@ -35,10 +36,19 @@ public class GeoInventory {
         this.items = items;
     }
 
+    public long getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(long timestamp) {
+        this.timestamp = timestamp;
+    }
+
     @Override
     public String toString() {
         return "GeoInventory{" +
-                "lat=" + lat +
+                "timestamp=" + timestamp +
+                ", lat=" + lat +
                 ", lng=" + lng +
                 ", items=" + items +
                 '}';
