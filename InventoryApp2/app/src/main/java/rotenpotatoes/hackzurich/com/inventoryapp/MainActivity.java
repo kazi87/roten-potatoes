@@ -6,8 +6,6 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
-import android.util.JsonReader;
-import android.util.JsonWriter;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -17,42 +15,32 @@ import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.HttpClient;
 import org.apache.http.client.ResponseHandler;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.BasicResponseHandler;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
-import java.io.Writer;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
-import javax.net.ssl.HttpsURLConnection;
-
-import rotenpotatoes.hackzurich.com.inventoryapp.data.Article;
+import rotenpotatoes.hackzurich.com.inventoryapp.data.GeoInventory;
+import rotenpotatoes.hackzurich.com.inventoryapp.data.Item;
 import rotenpotatoes.hackzurich.com.inventoryapp.data.InventoryDB;
 
 public class MainActivity extends AppCompatActivity {
 
-    private final List<Article> list = new InventoryDB().getRandomList();
+    private final InventoryDB inventoryDB = new InventoryDB();
+    private GeoInventory geoInv;
     private DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
 
 
@@ -79,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
     };
 
     public void postData() {
-        Log.i("Transfer", "Transferring list: " + list);
+        Log.i("Transfer", "Transferring list: " + geoInv);
         AsyncTask.execute(new Runnable() {
             @Override
             public void run() {
@@ -88,26 +76,32 @@ public class MainActivity extends AppCompatActivity {
                     DefaultHttpClient httpclient = new DefaultHttpClient();
 
                     //url with the post data
-                    HttpPost httpost = new HttpPost("http://localhost:8080");
+                    HttpPost httpost = new HttpPost("http://10.0.2.2:8080/inventory");
 
                     //convert parameters into JSON object
 
                     ObjectMapper objectMapper = new ObjectMapper();
 
                     //passes the results to a string builder/entity
-                    StringEntity se = new StringEntity(objectMapper.writeValueAsString(new Article("name", 1d, "kg", new Date())));
+                    StringEntity se = new StringEntity(objectMapper.writeValueAsString(geoInv));
 
 
                     //sets the post request as the resulting string
                     httpost.setEntity(se);
                     //sets a request header so the page receving the request
                     //will know what to do with it
-                    httpost.setHeader("Accept", "application/json");
+//                    httpost.setHeader("Accept", "application/json");
                     httpost.setHeader("Content-type", "application/json");
 
                     //Handles what is returned from the page
-                    ResponseHandler responseHandler = new BasicResponseHandler();
+                    ResponseHandler responseHandler = new ResponseHandler() {
+                        @Override
+                        public Object handleResponse(HttpResponse httpResponse) throws ClientProtocolException, IOException {
+                            return null;
+                        }
+                    };
                     Object response = httpclient.execute(httpost, responseHandler);
+
                     Log.i("REST", "Data: " + response);
 
                 } catch (UnsupportedEncodingException e) {
@@ -126,10 +120,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         final ListView listview = (ListView) findViewById(R.id.articlesListView);
-
+        geoInv = inventoryDB.getGeoInventory(46.766206, 8.085938);
 
         final ListAdapter adapter = new ArrayAdapter(this,
-                android.R.layout.simple_list_item_1, list) {
+                android.R.layout.simple_list_item_1, geoInv.getItems()) {
 
             @NonNull
             @Override
@@ -139,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
                 vi = LayoutInflater.from(getContext());
                 View v = vi.inflate(R.layout.article, null);
 
-                Article a = (Article) getItem(position);
+                Item a = (Item) getItem(position);
 
                 if (a != null) {
                     TextView tt1 = (TextView) v.findViewById(R.id.name);

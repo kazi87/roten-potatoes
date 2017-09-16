@@ -1,12 +1,12 @@
-package com.hackzurich.rotenpotatoes.backend.data;
+package rotenpotatoes.hackzurich.com.inventoryapp.data;
 
 import java.util.List;
 
 /**
  * Created by kazi on 16.09.17.
  */
-public class GeoInventory {
 
+public class GeoInventory {
     private double lat;
     private double lng;
     private List<Item> items;
@@ -38,9 +38,9 @@ public class GeoInventory {
     @Override
     public String toString() {
         return "GeoInventory{" +
-               "lat=" + lat +
-               ", lng=" + lng +
-               ", items=" + items +
-               '}';
+                "lat=" + lat +
+                ", lng=" + lng +
+                ", items=" + items +
+                '}';
     }
 }

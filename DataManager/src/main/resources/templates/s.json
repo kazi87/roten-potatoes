@@ -1,19 +1,19 @@
+
 {
-  "timestamp": "2016-11-15T22:43:19Z",
   "geoInventories": [
     {
       "lat": 80.0,
       "lng": 23.0022,
       "items": [
         {
-          "name": "Milk",
-          "quantity": 1.0,
-          "unit": "liter"
+          "name": "Potatoes",
+          "quantity": 1.3,
+          "unit": "kg"
         },
         {
-          "name": "Milk",
-          "quantity": 1.0,
-          "unit": "liter"
+          "name": "Potatoes",
+          "quantity": 1.3,
+          "unit": "kg"
         }
       ]
     }

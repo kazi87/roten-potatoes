@@ -5,11 +5,16 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
+import com.hackzurich.rotenpotatoes.backend.DataManager.InventoryService;
 import com.hackzurich.rotenpotatoes.backend.data.GeoInventory;
-import com.hackzurich.rotenpotatoes.backend.data.Response;
 import com.hackzurich.rotenpotatoes.backend.data.Item;
+import com.hackzurich.rotenpotatoes.backend.data.Response;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,28 +24,20 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class InventoryController {
 
-    @RequestMapping("/inventory")
-    public Response getInventory(@RequestParam String category, @RequestParam long timestamp){
-        Response inventory = new Response();
-        inventory.setTimestamp(new Date(timestamp));
-        List<GeoInventory> geoInv = new ArrayList<>();
-        GeoInventory geoInventory = new GeoInventory();
-        geoInventory.setLat(80.0000);
-        geoInventory.setLng(23.0022);
-        Item item = new Item();
-        item.setName("Potatoes");
-        item.setQuantity(1.3);
-        item.setUnit("kg");
+    @Autowired
+    private InventoryService inventoryService;
 
-        Item item2 = new Item();
-        item2.setName("Milk");
-        item2.setQuantity(1);
-        item2.setUnit("liter");
+    @RequestMapping(value = "/inventory", method = RequestMethod.GET)
+    public Response getInventory(@RequestParam String category, @RequestParam long timestamp) {
+        return inventoryService.getInventory(category, timestamp);
+    }
 
-        geoInventory.setItems(Arrays.asList(item, item));
-        geoInv.add(geoInventory);
-        inventory.setGeoInventories(geoInv);
-        return inventory;
+
+    @RequestMapping(value = "/inventory", method = RequestMethod.POST)
+    public ResponseEntity<Object> getInventory(@RequestBody GeoInventory inventory) {
+        System.out.println("Received geoInventory: " + inventory);
+        inventoryService.processInputData(inventory);
+        return ResponseEntity.noContent().build();
     }
 
 }

@@ -20,4 +20,9 @@ public class DataManagerApplication {
 	public InventoryController inventoryController(){
 		return new InventoryController();
 	}
+
+	@Bean
+	public InventoryService inventoryService(){
+		return new InventoryService();
+	}
 }
