@@ -1,0 +1,71 @@
+dairy
+  butter
+  margarine
+  cheese
+  eggs
+  milk
+  cream
+drinks
+  alcohol
+  coffee
+  fruit juice
+  water
+fruits
+  apples
+  oranges
+vegetables
+  potatoes
+  brocoli
+  carrots
+grains
+  bread
+  cereals
+  lasagna
+  pasta
+  pizza
+  rice
+proteins
+  chicken
+  beef
+  nuts
+  seeds
+  fish
+
+
+  {
+      "butter": ["1", "2", "3"],
+      "margarine": ["a", "b", "c"],
+      "cheese"
+      "egg"
+      "milk"
+      "cream"
+      "beer"
+      "water"
+      "coffee"
+      "apple"
+      "orange"
+      "banana"
+      "lemon"
+      "potato"
+      "broccoli"
+      "carrot"
+      "cucumber"
+      "garlic"
+      "lettuce"
+      "onion"
+      "tomato"
+      "brad"
+      "cereal"
+      "lasagna"
+      "pasta"
+      "pizza"
+      "rice"
+      "chicken"
+      "beef"
+      "nuts"
+      "seeds"
+      "fish"
+
+
+
+  }

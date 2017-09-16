@@ -1,0 +1,6 @@
+dairy
+drinks
+fruit
+vegetable
+grains
+proteins

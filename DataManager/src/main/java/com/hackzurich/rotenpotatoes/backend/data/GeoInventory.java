@@ -36,6 +36,10 @@ public class GeoInventory {
         this.items = items;
     }
     
+    public void appendItem(Item item){
+        this.items.add(item);
+    }
+    
     public long getTimestamp(){
         return timestamp;
     }
