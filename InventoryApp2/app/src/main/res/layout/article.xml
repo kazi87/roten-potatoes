@@ -1,0 +1,32 @@
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:columnCount="3"
+    android:orientation="horizontal"
+    android:paddingTop="20dp">
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="200dp"
+        android:layout_gravity="fill"
+        android:text="Potatoes"
+        android:textStyle="bold" />
+
+
+    <TextView
+        android:id="@+id/quantity"
+        android:layout_width="100dp"
+        android:layout_gravity="fill"
+        android:text="10 kg"
+        android:textStyle="italic" />
+
+    <TextView
+        android:id="@+id/expiration"
+        android:layout_gravity="fill"
+        android:paddingRight="5dp"
+        android:text="2017.10.10"
+        android:textAlignment="textEnd" />
+
+
+</GridLayout>
