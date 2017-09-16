@@ -34,4 +34,14 @@ public class Article {
     public Date getExpirationDate() {
         return expirationDate;
     }
+
+    @Override
+    public String toString() {
+        return "Article{" +
+                "name='" + name + '\'' +
+                ", quantity=" + quantity +
+                ", unit='" + unit + '\'' +
+                ", expirationDate=" + expirationDate +
+                '}';
+    }
 }

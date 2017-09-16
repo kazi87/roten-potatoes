@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -23,11 +24,11 @@ import rotenpotatoes.hackzurich.com.inventoryapp.data.InventoryDB;
 
 public class MainActivity extends AppCompatActivity {
 
-    private InventoryDB inventoryDB = new InventoryDB();
+    private final List<Article> list = new InventoryDB().getRandomList();
     private DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
 
 
-    private TextView mTextMessage;
+//    private TextView mTextMessage;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -36,13 +37,15 @@ public class MainActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-                    mTextMessage.setText(R.string.title_home);
+//                    mTextMessage.setText(R.string.title_home);
+                    uploadData();
+
                     return true;
                 case R.id.navigation_dashboard:
-                    mTextMessage.setText(R.string.title_dashboard);
+//                    mTextMessage.setText(R.string.title_dashboard);
                     return true;
                 case R.id.navigation_notifications:
-                    mTextMessage.setText(R.string.title_notifications);
+//                    mTextMessage.setText(R.string.title_notifications);
                     return true;
             }
             return false;
@@ -50,14 +53,17 @@ public class MainActivity extends AppCompatActivity {
 
     };
 
+    private void uploadData() {
+        Log.i("Transfer", "Transferring list: " + list);
+
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         final ListView listview = (ListView) findViewById(R.id.articlesListView);
 
-
-        final List<Article> list = inventoryDB.getRandomList();
 
         final ListAdapter adapter = new ArrayAdapter(this,
                 android.R.layout.simple_list_item_1, list) {
