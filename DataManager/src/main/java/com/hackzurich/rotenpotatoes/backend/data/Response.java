@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * Created by kazi on 16.09.17.
  */
-public class Inventory {
+public class Response {
 
     private Date timestamp;
     private List<GeoInventory> geoInventories;
