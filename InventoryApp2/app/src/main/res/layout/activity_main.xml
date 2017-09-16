@@ -17,7 +17,7 @@
         <ListView
             android:id="@+id/articlesListView"
             android:layout_width="match_parent"
-            android:layout_height="304dp"
+            android:layout_height="match_parent"
             android:footerDividersEnabled="true"
             android:headerDividersEnabled="true" />
 

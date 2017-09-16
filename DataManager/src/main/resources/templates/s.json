@@ -1,21 +1,18 @@
-
 {
-  "geoInventories": [
+  "userId":"kazi",
+  "timestamp": 1505592287135,
+  "lat": 80.0,
+  "lng": 23.0022,
+  "items": [
     {
-      "lat": 80.0,
-      "lng": 23.0022,
-      "items": [
-        {
-          "name": "Potatoes",
-          "quantity": 1.3,
-          "unit": "kg"
-        },
-        {
-          "name": "Potatoes",
-          "quantity": 1.3,
-          "unit": "kg"
-        }
-      ]
+      "name": "Lemon",
+      "quantity": 0.2,
+      "unit": "kg"
+    },
+    {
+      "name": "Potatoes",
+      "quantity": 1.3,
+      "unit": "kg"
     }
   ]
 }

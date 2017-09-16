@@ -2,44 +2,107 @@ package com.hackzurich.rotenpotatoes.backend.DataManager;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
 
+import com.hackzurich.rotenpotatoes.backend.DataManager.solr.SolrRecord;
+import com.hackzurich.rotenpotatoes.backend.DataManager.solr.SolrService;
 import com.hackzurich.rotenpotatoes.backend.data.GeoInventory;
 import com.hackzurich.rotenpotatoes.backend.data.Item;
 import com.hackzurich.rotenpotatoes.backend.data.Response;
+
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * Created by kazi on 16.09.17.
  */
 public class InventoryService {
 
+    @Autowired
+    private SolrService solrService;
+
+    @Autowired
+    private LabelService labelService;
+
     public void processInputData(GeoInventory inventory) {
-        //  HERE DO THE MAGIC WITH DATA - create a map, reverse map, etc...
+        for (Item item : inventory.getItems()) {
+            SolrRecord record = new SolrRecord();
+            record.setLat(inventory.getLat());
+            record.setLng(inventory.getLng());
+            record.setName(item.getName());
+            record.setQuantity(item.getQuantity());
+            record.setUnit(item.getUnit());
+            record.setTimestamp(inventory.getTimestamp());
+            record.setUserId(inventory.getUserId());
+            //  FIXME: Implement and use expiration service
+            record.setExpirationDate(null);
+
+            List<String> labels = labelService.getLabels(item.getName());
+            System.out.println(
+                "Return labels for item: " + item.getName() + ": " + Arrays.toString(labels.toArray(new String[0])));
+            record.setLabels(labels);
+            try {
+                solrService.index(record);
+                System.out.println("Indexed a solar record:" + record);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 
-    public Response getInventory(String category, long timestamp) {
-        //  HERE WE SHOULD READ DATA FROM THE CACHE/MAP
-        
-        Response inventory = new Response();
-        inventory.setTimestamp(new Date(timestamp));
-        List<GeoInventory> geoInv = new ArrayList<>();
-        GeoInventory geoInventory = new GeoInventory();
-        geoInventory.setLat(80.0000);
-        geoInventory.setLng(23.0022);
-        Item item = new Item();
-        item.setName("Potatoes");
-        item.setQuantity(1.3);
-        item.setUnit("kg");
+    public Response getInventory(String searchTerm, long timestamp) {
+        Response response = new Response();
 
-        Item item2 = new Item();
-        item2.setName(category);
-        item2.setQuantity(1);
-        item2.setUnit("liter");
+        List<SolrRecord> records = solrService.search(searchTerm, timestamp);
 
-        geoInventory.setItems(Arrays.asList(item, item));
-        geoInv.add(geoInventory);
-        inventory.setGeoInventories(geoInv);
-        return inventory;
+        if (records == null) {
+            return response;
+        }
+
+        List<GeoInventory> geoInventories = new ArrayList<>();
+        for (SolrRecord record : records) {
+
+            if (ignoreRecord(geoInventories, record)) {
+                continue;
+            }
+
+            GeoInventory geoInventory = null;
+            // search for an existing GeoLocation with given Lat/Lgn
+            for (GeoInventory gi : geoInventories) {
+                if (gi.getLat() == record.getLat() && gi.getLng() == record.getLng()) {
+                    geoInventory = gi;
+                    break;
+                }
+            }
+            if (geoInventory == null) {
+                geoInventory = new GeoInventory();
+            }
+            geoInventory.setLng(record.getLng());
+            geoInventory.setLat(record.getLat());
+            geoInventory.setUserId(record.getUserId());
+            geoInventory.setTimestamp(record.getTimestamp());
+
+            Item item = new Item();
+            item.setName(record.getName());
+            item.setQuantity(record.getQuantity());
+            item.setUnit(record.getUnit());
+            item.setExpirationDate(record.getExpirationDate());
+
+            geoInventory.setItems(Arrays.asList(item));
+            geoInventories.add(geoInventory);
+        }
+        response.setGeoInventories(geoInventories);
+
+        return response;
+    }
+
+    private boolean ignoreRecord(List<GeoInventory> geoInventories, SolrRecord record) {
+        for (GeoInventory gi : geoInventories) {
+            if (gi.getUserId()!= null && gi.getUserId().equalsIgnoreCase(record.getId())) {
+                System.out.println("Ignore old users record:" + gi.getUserId());
+                return true;
+
+            }
+        }
+        return false;
     }
 }

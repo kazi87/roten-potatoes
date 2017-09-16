@@ -7,6 +7,7 @@ import java.util.List;
  */
 
 public class GeoInventory {
+    private String userId;
     private long timestamp;
     private double lat;
     private double lng;
@@ -42,6 +43,14 @@ public class GeoInventory {
 
     public void setTimestamp(long timestamp) {
         this.timestamp = timestamp;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     @Override

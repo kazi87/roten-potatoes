@@ -27,5 +27,9 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-data-rest')
 	compile group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jsr310', version: '2.3.0-rc1'
 	compile('org.springframework.boot:spring-boot-starter-web')
+	// https://mvnrepository.com/artifact/org.apache.solr/solr-solrj
+	compile group: 'org.apache.solr', name: 'solr-solrj', version: '6.6.1'
+
+
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }

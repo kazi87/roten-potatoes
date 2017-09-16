@@ -45,7 +45,7 @@ public class InventoryServiceTest {
 
         geoInventory.setItems(Arrays.asList(item, item2, item3));
 
-        inventoryService.processInputData(geoInventory);
+//        inventoryService.processInputData(geoInventory);
     }
 
     @Test
@@ -53,9 +53,9 @@ public class InventoryServiceTest {
         String category = "Potatoes";
         long timestamp = new Date().getTime();
 
-        Response result = inventoryService.getInventory(category, timestamp);
+//        Response result = inventoryService.getInventory(category, timestamp);
 
-        System.out.println(result);
+//        System.out.println(result);
     }
 
 }
