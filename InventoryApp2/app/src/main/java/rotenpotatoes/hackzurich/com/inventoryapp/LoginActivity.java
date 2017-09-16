@@ -60,6 +60,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
     // UI references.
     private AutoCompleteTextView mEmailView;
+    private EditText mlatView;
+    private EditText mlngView;
     private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
@@ -70,9 +72,13 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         setContentView(R.layout.activity_login);
         // Set up the login form.
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
+        mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
+        mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
         populateAutoComplete();
 
         mPasswordView = (EditText) findViewById(R.id.password);
+        mlatView = (EditText) findViewById(R.id.lat);
+        mlngView= (EditText) findViewById(R.id.lng);
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
@@ -157,6 +163,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         // Store values at the time of the login attempt.
         String email = mEmailView.getText().toString();
         String password = mPasswordView.getText().toString();
+        Double lat = Double.valueOf(mlatView.getText().toString());
+        Double lng = Double.valueOf(mlngView.getText().toString());
 
         boolean cancel = false;
         View focusView = null;
@@ -189,6 +197,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             Log.i("ACTION","Opening the main activity");
             Intent intent = new Intent(this, MainActivity.class);
             intent.putExtra("mail", email);
+            intent.putExtra("lat", lat);
+            intent.putExtra("lng", lng);
             startActivity(intent);
 
 

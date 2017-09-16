@@ -3,6 +3,7 @@ package com.hackzurich.rotenpotatoes.backend.DataManager;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.UUID;
 
 import com.hackzurich.rotenpotatoes.backend.DataManager.solr.SolrRecord;
 import com.hackzurich.rotenpotatoes.backend.DataManager.solr.SolrService;
@@ -24,8 +25,10 @@ public class InventoryService {
     private LabelService labelService;
 
     public void processInputData(GeoInventory inventory) {
+        String uid = UUID.randomUUID().toString();
         for (Item item : inventory.getItems()) {
             SolrRecord record = new SolrRecord();
+            record.setSessionId(uid);
             record.setLat(inventory.getLat());
             record.setLng(inventory.getLng());
             record.setName(item.getName());
@@ -80,6 +83,7 @@ public class InventoryService {
             geoInventory.setLat(record.getLat());
             geoInventory.setUserId(record.getUserId());
             geoInventory.setTimestamp(record.getTimestamp());
+            geoInventory.setSessionId(record.getSessionId());
 
             Item item = new Item();
             item.setName(record.getName());
@@ -87,7 +91,10 @@ public class InventoryService {
             item.setUnit(record.getUnit());
             item.setExpirationDate(record.getExpirationDate());
 
-            geoInventory.setItems(Arrays.asList(item));
+            if(geoInventory.getItems() == null){
+                geoInventory.setItems(new ArrayList<>());
+            }
+            geoInventory.getItems().add(item);
             geoInventories.add(geoInventory);
         }
         response.setGeoInventories(geoInventories);
@@ -97,7 +104,7 @@ public class InventoryService {
 
     private boolean ignoreRecord(List<GeoInventory> geoInventories, SolrRecord record) {
         for (GeoInventory gi : geoInventories) {
-            if (gi.getUserId()!= null && gi.getUserId().equalsIgnoreCase(record.getId())) {
+            if (gi.getUserId() != null && gi.getUserId().equalsIgnoreCase(record.getUserId()) && gi.getSessionId() != record.getSessionId()) {
                 System.out.println("Ignore old users record:" + gi.getUserId());
                 return true;
 

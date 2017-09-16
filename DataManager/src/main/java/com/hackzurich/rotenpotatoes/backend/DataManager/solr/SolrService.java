@@ -31,13 +31,14 @@ public class SolrService {
     }
 
     public List<SolrRecord> search(String searchTerm, long timestamp) {
-        long startTime = Math.max(timestamp - 1000 * 60 * 60, 0);
+        long startTime = Math.max(timestamp - 1000 * 60 * 60 * 24, 0);
         SolrQuery query = new SolrQuery();
         query.setQuery(
             "name:*" + searchTerm + "* OR labels:*" + searchTerm + "*" + " AND timestamp:[" + startTime + " TO "
             + timestamp + "]");
         query.setSort(SolrQuery.SortClause.desc("timestamp"));
         query.setStart(0);
+        query.setRows(100);
         query.set("defType", "edismax");
 
 //        query.addGetFieldStatistics("quantity");

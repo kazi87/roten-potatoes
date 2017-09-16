@@ -42,6 +42,9 @@ public class MainActivity extends AppCompatActivity {
     private GeoInventory geoInv;
     private DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
 
+    private String userId = "unknown";
+    double lat = 0.0;
+    double lng = 0.0;
 
     private TextView mUserTextMessage;
     private TextView mLatTextMessage;
@@ -120,6 +123,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         final ListView listview = (ListView) findViewById(R.id.articlesListView);
 
+        String userId = (String) getIntent().getExtras().get("mail");
+        this.lat = (Double) getIntent().getExtras().get("lat");
+        this.lng = (Double) getIntent().getExtras().get("lng");
+        this.userId = userId.split("@")[0];
         randomInventory();
 
         final ListAdapter adapter = new ArrayAdapter(this,
@@ -163,7 +170,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void randomInventory() {
-        geoInv = mockInventoryDB.getGeoInventory(46.766206, 8.085938);
+        geoInv = mockInventoryDB.getGeoInventory(this.lat, this.lng);
+        geoInv.setUserId(this.userId);
         geoInv.setTimestamp(new Date().getTime());
     }
 

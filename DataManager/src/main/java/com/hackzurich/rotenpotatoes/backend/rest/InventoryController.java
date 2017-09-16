@@ -30,7 +30,7 @@ public class InventoryController {
 
 
     @RequestMapping(value = "/inventory", method = RequestMethod.POST)
-    public ResponseEntity<Object> getInventory(@RequestBody GeoInventory inventory) {
+    public ResponseEntity<Object> processInventory(@RequestBody GeoInventory inventory) {
         System.out.println("Received geoInventory: " + inventory);
         if (inventory == null || inventory.getItems() == null) {
             return ResponseEntity.badRequest().body("Null Body");

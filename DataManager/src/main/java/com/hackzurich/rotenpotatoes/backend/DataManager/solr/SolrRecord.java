@@ -18,7 +18,8 @@ public class SolrRecord {
 
     @Field("userId")
     private String userId;
-
+    @Field("sessionId")
+    private String sessionId;
     @Field("lat")
     private double lat;
     @Field("lng")
@@ -117,10 +118,21 @@ public class SolrRecord {
         this.userId = userId;
     }
 
+    public String getSessionId() {
+        return sessionId;
+    }
+
+    public void setSessionId(String sessionId) {
+        this.sessionId = sessionId;
+    }
+
     @Override
     public String toString() {
         return "SolrRecord{" +
-               "lat=" + lat +
+               "id='" + id + '\'' +
+               ", userId='" + userId + '\'' +
+               ", sessionId='" + sessionId + '\'' +
+               ", lat=" + lat +
                ", lng=" + lng +
                ", timestamp=" + timestamp +
                ", name='" + name + '\'' +

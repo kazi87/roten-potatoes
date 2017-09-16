@@ -19,7 +19,7 @@ public class LabelService {
         mock.put("tomatoes", Arrays.asList("vegatable", "healthy food", "red"));
         mock.put("lemons", Arrays.asList("fruit", "yellow", "healthy food"));
         mock.put("butter", Arrays.asList("oil", "fat", "unhealthy food"));
-        mock.put("onions", Arrays.asList("vegatable", "fat", "unhealthy food"));
+        mock.put("onions", Arrays.asList("vegatable", "unhealthy food"));
         mock.put("bananas", Arrays.asList("fruid", "yellow", "healthy", "musli"));
         mock.put("milk", Arrays.asList("drink", "white", "cow", "butter"));
         mock.put("cola", Arrays.asList("drink", "unhealthy food", "dark", "pepsi"));

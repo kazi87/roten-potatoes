@@ -7,6 +7,8 @@ import java.util.List;
  */
 public class GeoInventory {
 
+    //  session id
+    private String sessionId;
     private String userId;
     private double lat;
     private double lng;
@@ -53,11 +55,22 @@ public class GeoInventory {
         this.userId = userId;
     }
 
+    public String getSessionId() {
+        return sessionId;
+    }
+
+    public void setSessionId(String sessionId) {
+        this.sessionId = sessionId;
+    }
+
     @Override
     public String toString() {
         return "GeoInventory{" +
-               "lat=" + lat +
+               "sessionId='" + sessionId + '\'' +
+               ", userId='" + userId + '\'' +
+               ", lat=" + lat +
                ", lng=" + lng +
+               ", timestamp=" + timestamp +
                ", items=" + items +
                '}';
     }
