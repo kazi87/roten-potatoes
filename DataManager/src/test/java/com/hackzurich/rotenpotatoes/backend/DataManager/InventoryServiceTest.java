@@ -24,34 +24,35 @@ public class InventoryServiceTest {
 
     @Test
     public void processInputData() throws Exception {
-        GeoInventory geoInventory = new GeoInventory();
-        geoInventory.setLat(47.376887);
-        geoInventory.setLng(8.541694);
-
-        Item item = new Item();
-        item.setName("Potatoes");
-        item.setQuantity(1.3);
-        item.setUnit("kg");
-
-        Item item2 = new Item();
-        item2.setName("Milk");
-        item2.setQuantity(1);
-        item2.setUnit("liter");
-
-        Item item3 = new Item();
-        item2.setName("Butter");
-        item2.setQuantity(250);
-        item2.setUnit("grams");
-
-        geoInventory.setItems(Arrays.asList(item, item2, item3));
+        System.out.println("Timestamp " + String.valueOf(new Date().getTime()));
+//        GeoInventory geoInventory = new GeoInventory();
+//        geoInventory.setLat(47.376887);
+//        geoInventory.setLng(8.541694);
+//
+//        Item item = new Item();
+//        item.setName("Potatoes");
+//        item.setQuantity(1.3);
+//        item.setUnit("kg");
+//
+//        Item item2 = new Item();
+//        item2.setName("Milk");
+//        item2.setQuantity(1);
+//        item2.setUnit("liter");
+//
+//        Item item3 = new Item();
+//        item2.setName("Butter");
+//        item2.setQuantity(250);
+//        item2.setUnit("grams");
+//
+//        geoInventory.setItems(Arrays.asList(item, item2, item3));
 
 //        inventoryService.processInputData(geoInventory);
     }
 
     @Test
     public void getInventory() throws Exception {
-        String category = "Potatoes";
-        long timestamp = new Date().getTime();
+//        String category = "Potatoes";
+//        long timestamp = new Date().getTime();
 
 //        Response result = inventoryService.getInventory(category, timestamp);
 

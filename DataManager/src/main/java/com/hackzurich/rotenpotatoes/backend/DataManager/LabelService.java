@@ -20,13 +20,16 @@ public class LabelService {
         mock.put("lemons", Arrays.asList("fruit", "yellow", "healthy food"));
         mock.put("butter", Arrays.asList("oil", "fat", "unhealthy food"));
         mock.put("onions", Arrays.asList("vegatable", "unhealthy food"));
-        mock.put("bananas", Arrays.asList("fruid", "yellow", "healthy", "musli"));
+        mock.put("bananas", Arrays.asList("fruit", "yellow", "healthy", "musli"));
         mock.put("milk", Arrays.asList("drink", "white", "cow", "butter"));
         mock.put("cola", Arrays.asList("drink", "unhealthy food", "dark", "pepsi"));
         mock.put("tea", Arrays.asList("drink", "green", "black", "leaf"));
         mock.put("chicken", Arrays.asList("food", "animal", "breast", "grill"));
-        mock.put("chicken", Arrays.asList("food", "animal", "breast", "grill"));
         mock.put("feta", Arrays.asList("cheese", "salat", "olives", "milk"));
+        mock.put("salt", Arrays.asList("white", "powder", "tea"));
+        mock.put("sugar", Arrays.asList("white", "powder", "meals", "spice"));
+        mock.put("oregano", Arrays.asList("pizza", "spice"));
+        mock.put("olives oil", Arrays.asList("fat", "oil"));
     }
 
     public List<String> getLabels(String searchTerm) {

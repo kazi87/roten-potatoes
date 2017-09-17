@@ -1,6 +1,10 @@
 package com.hackzurich.rotenpotatoes.backend.rest;
 
+import java.util.Date;
+import java.util.List;
+
 import com.hackzurich.rotenpotatoes.backend.DataManager.InventoryService;
+import com.hackzurich.rotenpotatoes.backend.DataManager.mock.MockService;
 import com.hackzurich.rotenpotatoes.backend.data.GeoInventory;
 import com.hackzurich.rotenpotatoes.backend.data.Response;
 
@@ -24,10 +28,22 @@ public class InventoryController {
     private InventoryService inventoryService;
 
     @RequestMapping(value = "/inventory", method = RequestMethod.GET)
-    public Response getInventory(@RequestParam String category, @RequestParam long timestamp) {
+    public Response getInventory(@RequestParam String category, @RequestParam(required = false) Long timestamp) {
+        if(timestamp == null){
+            timestamp = new Date().getTime();
+        }
         return inventoryService.getInventory(category, timestamp);
     }
 
+    @RequestMapping(value = "/initializer", method = RequestMethod.GET)
+    public ResponseEntity<Object> getInventory() {
+        List<GeoInventory> mocks = MockService.get();
+        for (GeoInventory gi : mocks) {
+            inventoryService.processInputData(gi);
+            System.out.println("=== Loaded GeoInventory: " + gi);
+        }
+        return ResponseEntity.ok("Data has been mocked. Current timestamp: " + new Date().getTime());
+    }
 
     @RequestMapping(value = "/inventory", method = RequestMethod.POST)
     public ResponseEntity<Object> processInventory(@RequestBody GeoInventory inventory) {

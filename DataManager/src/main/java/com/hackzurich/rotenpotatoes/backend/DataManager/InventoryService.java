@@ -31,7 +31,7 @@ public class InventoryService {
             record.setSessionId(uid);
             record.setLat(inventory.getLat());
             record.setLng(inventory.getLng());
-            record.setName(item.getName());
+            record.setName(item.getName().toLowerCase());
             record.setQuantity(item.getQuantity());
             record.setUnit(item.getUnit());
             record.setTimestamp(inventory.getTimestamp());
@@ -78,10 +78,11 @@ public class InventoryService {
             }
             if (geoInventory == null) {
                 geoInventory = new GeoInventory();
+                geoInventories.add(geoInventory);
+                geoInventory.setLng(record.getLng());
+                geoInventory.setLat(record.getLat());
+                geoInventory.setUserId(record.getUserId());
             }
-            geoInventory.setLng(record.getLng());
-            geoInventory.setLat(record.getLat());
-            geoInventory.setUserId(record.getUserId());
             geoInventory.setTimestamp(record.getTimestamp());
             geoInventory.setSessionId(record.getSessionId());
 
@@ -95,7 +96,6 @@ public class InventoryService {
                 geoInventory.setItems(new ArrayList<>());
             }
             geoInventory.getItems().add(item);
-            geoInventories.add(geoInventory);
         }
         response.setGeoInventories(geoInventories);
 

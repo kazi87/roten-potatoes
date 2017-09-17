@@ -31,10 +31,11 @@ public class SolrService {
     }
 
     public List<SolrRecord> search(String searchTerm, long timestamp) {
+        searchTerm = searchTerm.toLowerCase();
         long startTime = Math.max(timestamp - 1000 * 60 * 60 * 24, 0);
         SolrQuery query = new SolrQuery();
         query.setQuery(
-            "name:*" + searchTerm + "* OR labels:*" + searchTerm + "*" + " AND timestamp:[" + startTime + " TO "
+            "(name:*" + searchTerm + "* OR labels:*" + searchTerm + "*) AND timestamp:[" + startTime + " TO "
             + timestamp + "]");
         query.setSort(SolrQuery.SortClause.desc("timestamp"));
         query.setStart(0);

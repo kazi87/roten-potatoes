@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
                     return true;
                 case R.id.navigation_notifications:
                     postData();
-                    Toast.makeText(getBaseContext(), "Data has been uploaded to server...", 121);
+                    Toast.makeText(getApplicationContext(), "Data has been uploaded to server...", Toast.LENGTH_SHORT).show();
                     return true;
             }
             return false;
@@ -167,6 +167,9 @@ public class MainActivity extends AppCompatActivity {
 //        mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        Toast.makeText(getApplicationContext(), "Current timestamp: " + new Date().getTime(), Toast.LENGTH_SHORT).show();
+        Log.i("Timestamp", String.valueOf(new Date().getTime()));
+        System.out.println("Timestamp " + String.valueOf(new Date().getTime()));
     }
 
     private void randomInventory() {
