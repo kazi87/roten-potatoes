@@ -1,0 +1,467 @@
+2017-09-16 18:07:20.831 INFO  (main) [   ] o.e.j.s.Server jetty-9.3.14.v20161028
+2017-09-16 18:07:21.146 INFO  (main) [   ] o.a.s.s.SolrDispatchFilter  ___      _       Welcome to Apache Solr™ version 6.6.1
+2017-09-16 18:07:21.146 INFO  (main) [   ] o.a.s.s.SolrDispatchFilter / __| ___| |_ _   Starting in standalone mode on port 8983
+2017-09-16 18:07:21.146 INFO  (main) [   ] o.a.s.s.SolrDispatchFilter \__ \/ _ \ | '_|  Install dir: /opt/solr-6.6.1
+2017-09-16 18:07:21.171 INFO  (main) [   ] o.a.s.s.SolrDispatchFilter |___/\___/_|_|    Start time: 2017-09-16T18:07:21.149Z
+2017-09-16 18:07:21.171 INFO  (main) [   ] o.a.s.s.StartupLoggingUtils Property solr.log.muteconsole given. Muting ConsoleAppender named CONSOLE
+2017-09-16 18:07:21.194 INFO  (main) [   ] o.a.s.c.SolrResourceLoader Using system property solr.solr.home: /opt/solr-6.6.1/server/solr
+2017-09-16 18:07:21.200 INFO  (main) [   ] o.a.s.c.SolrXmlConfig Loading container configuration from /opt/solr-6.6.1/server/solr/solr.xml
+2017-09-16 18:07:21.528 INFO  (main) [   ] o.a.s.u.UpdateShardHandler Creating UpdateShardHandler HTTP client with params: socketTimeout=600000&connTimeout=60000&retry=true
+2017-09-16 18:07:22.862 INFO  (main) [   ] o.a.s.c.CorePropertiesLocator Found 0 core definitions underneath /opt/solr-6.6.1/server/solr
+2017-09-16 18:07:22.926 INFO  (main) [   ] o.e.j.s.Server Started @2611ms
+2017-09-16 18:07:30.547 INFO  (qtp1205044462-16) [   ] o.a.s.c.TransientSolrCoreCacheDefault Allocating transient cache for 2147483647 transient cores
+2017-09-16 18:07:30.900 INFO  (qtp1205044462-20) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/cores params={indexInfo=false&wt=json&_=1505585250698} status=0 QTime=33
+2017-09-16 18:07:30.920 INFO  (qtp1205044462-17) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/system params={wt=json&_=1505585250699} status=0 QTime=53
+2017-09-16 18:07:32.983 INFO  (qtp1205044462-16) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/cores params={indexInfo=false&wt=json&_=1505585250698} status=0 QTime=0
+2017-09-16 18:07:32.983 INFO  (qtp1205044462-19) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/cores params={wt=json&_=1505585250698} status=0 QTime=0
+2017-09-16 18:07:32.996 INFO  (qtp1205044462-32) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/system params={wt=json&_=1505585250699} status=0 QTime=12
+2017-09-16 18:07:49.738 INFO  (qtp1205044462-20) [   ] o.a.s.h.a.CoreAdminOperation core create command schema=schema.xml&dataDir=food_core&name=food_core&action=CREATE&config=solrconfig.xml&instanceDir=food_core&wt=json&_=1505585250698
+2017-09-16 18:07:49.750 ERROR (qtp1205044462-20) [   x:food_core] o.a.s.h.RequestHandlerBase org.apache.solr.common.SolrException: Error CREATEing SolrCore 'food_core': Unable to create core [food_core] Caused by: Can't find resource 'solrconfig.xml' in classpath or '/opt/solr-6.6.1/server/solr/food_core'
+	at org.apache.solr.core.CoreContainer.create(CoreContainer.java:891)
+	at org.apache.solr.handler.admin.CoreAdminOperation.lambda$static$0(CoreAdminOperation.java:91)
+	at org.apache.solr.handler.admin.CoreAdminOperation.execute(CoreAdminOperation.java:384)
+	at org.apache.solr.handler.admin.CoreAdminHandler$CallInfo.call(CoreAdminHandler.java:388)
+	at org.apache.solr.handler.admin.CoreAdminHandler.handleRequestBody(CoreAdminHandler.java:174)
+	at org.apache.solr.handler.RequestHandlerBase.handleRequest(RequestHandlerBase.java:173)
+	at org.apache.solr.servlet.HttpSolrCall.handleAdmin(HttpSolrCall.java:748)
+	at org.apache.solr.servlet.HttpSolrCall.handleAdminRequest(HttpSolrCall.java:729)
+	at org.apache.solr.servlet.HttpSolrCall.call(HttpSolrCall.java:510)
+	at org.apache.solr.servlet.SolrDispatchFilter.doFilter(SolrDispatchFilter.java:361)
+	at org.apache.solr.servlet.SolrDispatchFilter.doFilter(SolrDispatchFilter.java:305)
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1691)
+	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:582)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:143)
+	at org.eclipse.jetty.security.SecurityHandler.handle(SecurityHandler.java:548)
+	at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:226)
+	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1180)
+	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:512)
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:185)
+	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1112)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141)
+	at org.eclipse.jetty.server.handler.ContextHandlerCollection.handle(ContextHandlerCollection.java:213)
+	at org.eclipse.jetty.server.handler.HandlerCollection.handle(HandlerCollection.java:119)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:134)
+	at org.eclipse.jetty.rewrite.handler.RewriteHandler.handle(RewriteHandler.java:335)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:134)
+	at org.eclipse.jetty.server.Server.handle(Server.java:534)
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:320)
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:251)
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:273)
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:95)
+	at org.eclipse.jetty.io.SelectChannelEndPoint$2.run(SelectChannelEndPoint.java:93)
+	at org.eclipse.jetty.util.thread.strategy.ExecuteProduceConsume.executeProduceConsume(ExecuteProduceConsume.java:303)
+	at org.eclipse.jetty.util.thread.strategy.ExecuteProduceConsume.produceConsume(ExecuteProduceConsume.java:148)
+	at org.eclipse.jetty.util.thread.strategy.ExecuteProduceConsume.run(ExecuteProduceConsume.java:136)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:671)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$2.run(QueuedThreadPool.java:589)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: org.apache.solr.common.SolrException: Unable to create core [food_core]
+	at org.apache.solr.core.CoreContainer.createFromDescriptor(CoreContainer.java:938)
+	at org.apache.solr.core.CoreContainer.create(CoreContainer.java:858)
+	... 37 more
+Caused by: org.apache.solr.common.SolrException: Could not load conf for core food_core: Error loading solr config from /opt/solr-6.6.1/server/solr/food_core/conf/solrconfig.xml
+	at org.apache.solr.core.ConfigSetService.getConfig(ConfigSetService.java:97)
+	at org.apache.solr.core.CoreContainer.createFromDescriptor(CoreContainer.java:918)
+	... 38 more
+Caused by: org.apache.solr.common.SolrException: Error loading solr config from /opt/solr-6.6.1/server/solr/food_core/conf/solrconfig.xml
+	at org.apache.solr.core.SolrConfig.readFromResourceLoader(SolrConfig.java:188)
+	at org.apache.solr.core.ConfigSetService.createSolrConfig(ConfigSetService.java:109)
+	at org.apache.solr.core.ConfigSetService.getConfig(ConfigSetService.java:91)
+	... 39 more
+Caused by: org.apache.solr.core.SolrResourceNotFoundException: Can't find resource 'solrconfig.xml' in classpath or '/opt/solr-6.6.1/server/solr/food_core'
+	at org.apache.solr.core.SolrResourceLoader.openResource(SolrResourceLoader.java:405)
+	at org.apache.solr.core.SolrResourceLoader.openConfig(SolrResourceLoader.java:360)
+	at org.apache.solr.core.Config.<init>(Config.java:120)
+	at org.apache.solr.core.Config.<init>(Config.java:90)
+	at org.apache.solr.core.SolrConfig.<init>(SolrConfig.java:203)
+	at org.apache.solr.core.SolrConfig.readFromResourceLoader(SolrConfig.java:180)
+	... 41 more
+
+2017-09-16 18:07:49.750 INFO  (qtp1205044462-20) [   x:food_core] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/cores params={schema=schema.xml&dataDir=food_core&name=food_core&action=CREATE&config=solrconfig.xml&instanceDir=food_core&wt=json&_=1505585250698} status=400 QTime=13
+2017-09-16 18:08:26.702 INFO  (qtp1205044462-19) [   ] o.a.s.h.a.CoreAdminOperation core create command schema=schema.xml&dataDir=food_core&name=food_core&action=CREATE&config=solrconfig.xml&instanceDir=food_core&wt=json&_=1505585250698
+2017-09-16 18:08:26.746 INFO  (qtp1205044462-19) [   x:food_core] o.a.s.c.SolrResourceLoader [food_core] Added 51 libs to classloader, from paths: [/opt/solr-6.6.1/contrib/clustering/lib, /opt/solr-6.6.1/contrib/extraction/lib, /opt/solr-6.6.1/contrib/langid/lib, /opt/solr-6.6.1/contrib/velocity/lib, /opt/solr-6.6.1/dist]
+2017-09-16 18:08:26.920 INFO  (qtp1205044462-19) [   x:food_core] o.a.s.c.SolrConfig Using Lucene MatchVersion: 6.6.1
+2017-09-16 18:08:27.047 INFO  (qtp1205044462-19) [   x:food_core] o.a.s.s.IndexSchema [food_core] Schema name=example-basic
+2017-09-16 18:08:27.470 INFO  (qtp1205044462-19) [   x:food_core] o.a.s.s.IndexSchema Loaded schema example-basic/1.6 with uniqueid field id
+2017-09-16 18:08:27.498 INFO  (qtp1205044462-19) [   x:food_core] o.a.s.c.CoreContainer Creating SolrCore 'food_core' using configuration from instancedir /opt/solr-6.6.1/server/solr/food_core, trusted=true
+2017-09-16 18:08:27.516 INFO  (qtp1205044462-19) [   x:food_core] o.a.s.c.SolrCore solr.RecoveryStrategy.Builder
+2017-09-16 18:08:27.522 INFO  (qtp1205044462-19) [   x:food_core] o.a.s.c.SolrCore [[food_core] ] Opening new SolrCore at [/opt/solr-6.6.1/server/solr/food_core], dataDir=[/opt/solr-6.6.1/server/solr/food_core/food_core/]
+2017-09-16 18:08:27.611 INFO  (qtp1205044462-19) [   x:food_core] o.a.s.r.XSLTResponseWriter xsltCacheLifetimeSeconds=5
+2017-09-16 18:08:27.877 INFO  (qtp1205044462-19) [   x:food_core] o.a.s.u.UpdateHandler Using UpdateLog implementation: org.apache.solr.update.UpdateLog
+2017-09-16 18:08:27.877 INFO  (qtp1205044462-19) [   x:food_core] o.a.s.u.UpdateLog Initializing UpdateLog: dataDir= defaultSyncLevel=FLUSH numRecordsToKeep=100 maxNumLogsToKeep=10 numVersionBuckets=65536
+2017-09-16 18:08:27.883 INFO  (qtp1205044462-19) [   x:food_core] o.a.s.u.CommitTracker Hard AutoCommit: if uncommited for 15000ms; 
+2017-09-16 18:08:27.884 INFO  (qtp1205044462-19) [   x:food_core] o.a.s.u.CommitTracker Soft AutoCommit: disabled
+2017-09-16 18:08:27.898 INFO  (qtp1205044462-19) [   x:food_core] o.a.s.s.SolrIndexSearcher Opening [Searcher@2657295[food_core] main]
+2017-09-16 18:08:27.907 INFO  (qtp1205044462-19) [   x:food_core] o.a.s.r.ManagedResourceStorage File-based storage initialized to use dir: /opt/solr-6.6.1/server/solr/food_core/conf
+2017-09-16 18:08:27.921 INFO  (qtp1205044462-19) [   x:food_core] o.a.s.h.c.SpellCheckComponent Initializing spell checkers
+2017-09-16 18:08:27.925 INFO  (qtp1205044462-19) [   x:food_core] o.a.s.s.DirectSolrSpellChecker init: {name=default,field=_text_,classname=solr.DirectSolrSpellChecker,distanceMeasure=internal,accuracy=0.5,maxEdits=2,minPrefix=1,maxInspections=5,minQueryLength=4,maxQueryFrequency=0.01}
+2017-09-16 18:08:27.928 INFO  (qtp1205044462-19) [   x:food_core] o.a.s.h.c.QueryElevationComponent Loading QueryElevation from: /opt/solr-6.6.1/server/solr/food_core/conf/elevate.xml
+2017-09-16 18:08:27.936 INFO  (qtp1205044462-19) [   x:food_core] o.a.s.h.ReplicationHandler Commits will be reserved for  10000
+2017-09-16 18:08:27.975 INFO  (searcherExecutor-7-thread-1-processing-x:food_core) [   x:food_core] o.a.s.c.QuerySenderListener QuerySenderListener sending requests to Searcher@2657295[food_core] main{ExitableDirectoryReader(UninvertingDirectoryReader())}
+2017-09-16 18:08:27.975 INFO  (searcherExecutor-7-thread-1-processing-x:food_core) [   x:food_core] o.a.s.c.QuerySenderListener QuerySenderListener done.
+2017-09-16 18:08:27.975 INFO  (searcherExecutor-7-thread-1-processing-x:food_core) [   x:food_core] o.a.s.h.c.SpellCheckComponent Loading spell index for spellchecker: default
+2017-09-16 18:08:27.976 INFO  (searcherExecutor-7-thread-1-processing-x:food_core) [   x:food_core] o.a.s.c.SolrCore [food_core] Registered new searcher Searcher@2657295[food_core] main{ExitableDirectoryReader(UninvertingDirectoryReader())}
+2017-09-16 18:08:27.980 INFO  (qtp1205044462-19) [   x:food_core] o.a.s.u.UpdateLog Could not find max version in index or recent updates, using new clock 1578720619899387904
+2017-09-16 18:08:27.984 INFO  (qtp1205044462-19) [   x:food_core] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/cores params={schema=schema.xml&dataDir=food_core&name=food_core&action=CREATE&config=solrconfig.xml&instanceDir=food_core&wt=json&_=1505585250698} status=0 QTime=1282
+2017-09-16 18:08:28.006 INFO  (qtp1205044462-17) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/cores params={indexInfo=false&wt=json&_=1505585250698} status=0 QTime=0
+2017-09-16 18:08:28.011 INFO  (qtp1205044462-13) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/cores params={wt=json&_=1505585250698} status=0 QTime=2
+2017-09-16 18:08:28.021 INFO  (qtp1205044462-17) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/system params={wt=json&_=1505585250699} status=0 QTime=12
+2017-09-16 18:08:30.884 INFO  (qtp1205044462-20) [   ] o.a.s.c.SolrResourceLoader [food_core] Added 51 libs to classloader, from paths: [/opt/solr-6.6.1/contrib/clustering/lib, /opt/solr-6.6.1/contrib/extraction/lib, /opt/solr-6.6.1/contrib/langid/lib, /opt/solr-6.6.1/contrib/velocity/lib, /opt/solr-6.6.1/dist]
+2017-09-16 18:08:30.913 INFO  (qtp1205044462-20) [   ] o.a.s.c.SolrConfig Using Lucene MatchVersion: 6.6.1
+2017-09-16 18:08:30.938 INFO  (qtp1205044462-20) [   ] o.a.s.s.IndexSchema [food_core] Schema name=example-basic
+2017-09-16 18:08:31.076 INFO  (qtp1205044462-20) [   ] o.a.s.s.IndexSchema Loaded schema example-basic/1.6 with uniqueid field id
+2017-09-16 18:08:31.094 INFO  (qtp1205044462-20) [   ] o.a.s.c.CoreContainer Reloading SolrCore 'food_core' using configuration from instancedir /opt/solr-6.6.1/server/solr/food_core
+2017-09-16 18:08:31.095 INFO  (qtp1205044462-20) [   x:food_core] o.a.s.c.SolrCore [[food_core] ] Opening new SolrCore at [/opt/solr-6.6.1/server/solr/food_core], dataDir=[/opt/solr-6.6.1/server/solr/food_core/food_core/]
+2017-09-16 18:08:31.096 INFO  (qtp1205044462-20) [   x:food_core] o.a.s.r.XSLTResponseWriter xsltCacheLifetimeSeconds=5
+2017-09-16 18:08:31.122 INFO  (qtp1205044462-20) [   x:food_core] o.a.s.u.CommitTracker Hard AutoCommit: if uncommited for 15000ms; 
+2017-09-16 18:08:31.122 INFO  (qtp1205044462-20) [   x:food_core] o.a.s.u.CommitTracker Soft AutoCommit: disabled
+2017-09-16 18:08:31.124 INFO  (qtp1205044462-20) [   x:food_core] o.a.s.s.SolrIndexSearcher Opening [Searcher@661d0881[food_core] main]
+2017-09-16 18:08:31.124 INFO  (qtp1205044462-20) [   x:food_core] o.a.s.r.ManagedResourceStorage File-based storage initialized to use dir: /opt/solr-6.6.1/server/solr/food_core/conf
+2017-09-16 18:08:31.125 INFO  (qtp1205044462-20) [   x:food_core] o.a.s.h.c.SpellCheckComponent Initializing spell checkers
+2017-09-16 18:08:31.125 INFO  (qtp1205044462-20) [   x:food_core] o.a.s.s.DirectSolrSpellChecker init: {name=default,field=_text_,classname=solr.DirectSolrSpellChecker,distanceMeasure=internal,accuracy=0.5,maxEdits=2,minPrefix=1,maxInspections=5,minQueryLength=4,maxQueryFrequency=0.01}
+2017-09-16 18:08:31.125 INFO  (qtp1205044462-20) [   x:food_core] o.a.s.h.c.QueryElevationComponent Loading QueryElevation from: /opt/solr-6.6.1/server/solr/food_core/conf/elevate.xml
+2017-09-16 18:08:31.128 INFO  (qtp1205044462-20) [   x:food_core] o.a.s.h.ReplicationHandler Commits will be reserved for  10000
+2017-09-16 18:08:31.128 INFO  (searcherExecutor-12-thread-1-processing-x:food_core) [   x:food_core] o.a.s.c.QuerySenderListener QuerySenderListener sending requests to Searcher@661d0881[food_core] main{ExitableDirectoryReader(UninvertingDirectoryReader())}
+2017-09-16 18:08:31.129 INFO  (searcherExecutor-12-thread-1-processing-x:food_core) [   x:food_core] o.a.s.c.QuerySenderListener QuerySenderListener done.
+2017-09-16 18:08:31.129 INFO  (searcherExecutor-12-thread-1-processing-x:food_core) [   x:food_core] o.a.s.h.c.SpellCheckComponent Loading spell index for spellchecker: default
+2017-09-16 18:08:31.129 INFO  (searcherExecutor-12-thread-1-processing-x:food_core) [   x:food_core] o.a.s.c.SolrCore [food_core] Registered new searcher Searcher@661d0881[food_core] main{ExitableDirectoryReader(UninvertingDirectoryReader())}
+2017-09-16 18:08:31.129 INFO  (qtp1205044462-20) [   x:food_core] o.a.s.u.UpdateLog Could not find max version in index or recent updates, using new clock 1578720623202402304
+2017-09-16 18:08:31.134 INFO  (qtp1205044462-20) [   x:food_core] o.a.s.u.DefaultSolrCoreState New IndexWriter is ready to be used.
+2017-09-16 18:08:31.134 INFO  (qtp1205044462-20) [   x:food_core] o.a.s.s.SolrIndexSearcher Opening [Searcher@2ef638dd[food_core] main]
+2017-09-16 18:08:31.135 INFO  (qtp1205044462-20) [   x:food_core] o.a.s.c.SolrCore [food_core]  CLOSING SolrCore org.apache.solr.core.SolrCore@a7de7d1
+2017-09-16 18:08:31.135 INFO  (qtp1205044462-20) [   x:food_core] o.a.s.m.SolrMetricManager Closing metric reporters for: solr.core.food_core
+2017-09-16 18:08:31.136 INFO  (qtp1205044462-20) [   x:food_core] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/cores params={core=food_core&action=RELOAD&wt=json&_=1505585250698} status=0 QTime=264
+2017-09-16 18:08:31.138 INFO  (searcherExecutor-12-thread-1-processing-x:food_core) [   x:food_core] o.a.s.c.QuerySenderListener QuerySenderListener sending requests to Searcher@2ef638dd[food_core] main{ExitableDirectoryReader(UninvertingDirectoryReader())}
+2017-09-16 18:08:31.138 INFO  (searcherExecutor-12-thread-1-processing-x:food_core) [   x:food_core] o.a.s.c.QuerySenderListener QuerySenderListener done.
+2017-09-16 18:08:31.138 INFO  (searcherExecutor-12-thread-1-processing-x:food_core) [   x:food_core] o.a.s.c.SolrCore [food_core] Registered new searcher Searcher@2ef638dd[food_core] main{ExitableDirectoryReader(UninvertingDirectoryReader())}
+2017-09-16 18:08:32.157 INFO  (qtp1205044462-21) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/cores params={indexInfo=false&wt=json&_=1505585250698} status=0 QTime=0
+2017-09-16 18:08:32.157 INFO  (qtp1205044462-17) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/cores params={wt=json&_=1505585250698} status=0 QTime=0
+2017-09-16 18:08:32.168 INFO  (qtp1205044462-30) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/system params={wt=json&_=1505585250699} status=0 QTime=11
+2017-09-16 18:08:34.324 INFO  (qtp1205044462-20) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/cores params={indexInfo=false&wt=json&_=1505585250698} status=0 QTime=0
+2017-09-16 18:08:34.329 INFO  (qtp1205044462-32) [   x:food_core] o.a.s.c.S.Request [food_core]  webapp=/solr path=/admin/luke params={numTerms=0&show=index&wt=json&_=1505585314318} status=0 QTime=5
+2017-09-16 18:08:34.330 INFO  (qtp1205044462-30) [   x:food_core] o.a.s.c.S.Request [food_core]  webapp=/solr path=/replication params={wt=json&command=details&_=1505585314318} status=0 QTime=5
+2017-09-16 18:08:34.330 INFO  (qtp1205044462-20) [   x:food_core] o.a.s.c.S.Request [food_core]  webapp=/solr path=/admin/ping params={action=status&wt=json&_=1505585250699&ts=1505585250699} status=503 QTime=2
+2017-09-16 18:08:34.342 INFO  (qtp1205044462-18) [   x:food_core] o.a.s.c.S.Request [food_core]  webapp=/solr path=/admin/system params={wt=json&_=1505585314318} status=0 QTime=15
+2017-09-16 18:08:34.342 INFO  (qtp1205044462-22) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/system params={wt=json&_=1505585250699} status=0 QTime=18
+2017-09-16 18:42:41.574 INFO  (qtp1205044462-30) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/cores params={indexInfo=false&wt=json&_=1505585250698} status=0 QTime=0
+2017-09-16 18:42:41.578 INFO  (qtp1205044462-22) [   x:food_core] o.a.s.c.S.Request [food_core]  webapp=/solr path=/admin/mbeans params={cat=QUERY&wt=json&_=1505587361563} status=0 QTime=2
+2017-09-16 18:42:41.593 INFO  (qtp1205044462-39) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/system params={wt=json&_=1505585250699} status=0 QTime=17
+2017-09-16 18:42:41.599 INFO  (qtp1205044462-21) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/cores params={indexInfo=false&wt=json&_=1505585250698} status=0 QTime=0
+2017-09-16 18:42:41.599 INFO  (qtp1205044462-19) [   x:food_core] o.a.s.c.S.Request [food_core]  webapp=/solr path=/admin/mbeans params={cat=QUERY&wt=json&_=1505587361563} status=0 QTime=0
+2017-09-16 18:42:42.645 INFO  (qtp1205044462-39) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/cores params={indexInfo=false&wt=json&_=1505585250698} status=0 QTime=0
+2017-09-16 18:42:42.647 INFO  (qtp1205044462-22) [   x:food_core] o.a.s.c.S.Request [food_core]  webapp=/solr path=/admin/file params={wt=json&_=1505587362642} status=0 QTime=1
+2017-09-16 18:42:42.665 INFO  (qtp1205044462-30) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/system params={wt=json&_=1505585250699} status=0 QTime=19
+2017-09-16 18:42:42.665 INFO  (qtp1205044462-39) [   x:food_core] o.a.s.c.S.Request [food_core]  webapp=/solr path=/admin/file params={file=lang&wt=json&_=1505587362642} status=0 QTime=1
+2017-09-16 18:43:59.951 INFO  (qtp1205044462-39) [   x:food_core] o.a.s.c.S.Request [food_core]  webapp=/solr path=/select params={wt=javabin&version=2} hits=0 status=0 QTime=10
+2017-09-16 18:46:55.481 INFO  (qtp1205044462-21) [   x:food_core] o.a.s.u.p.LogUpdateProcessorFactory [food_core]  webapp=/solr path=/update params={wt=javabin&version=2}{} 0 20
+2017-09-16 18:46:55.482 ERROR (qtp1205044462-21) [   x:food_core] o.a.s.h.RequestHandlerBase org.apache.solr.common.SolrException: Document is missing mandatory uniqueKey field: id
+	at org.apache.solr.update.AddUpdateCommand.getIndexedId(AddUpdateCommand.java:117)
+	at org.apache.solr.update.processor.DistributedUpdateProcessor.versionAdd(DistributedUpdateProcessor.java:992)
+	at org.apache.solr.update.processor.DistributedUpdateProcessor.processAdd(DistributedUpdateProcessor.java:748)
+	at org.apache.solr.update.processor.LogUpdateProcessorFactory$LogUpdateProcessor.processAdd(LogUpdateProcessorFactory.java:103)
+	at org.apache.solr.handler.loader.JavabinLoader$1.update(JavabinLoader.java:98)
+	at org.apache.solr.client.solrj.request.JavaBinUpdateRequestCodec$1.readOuterMostDocIterator(JavaBinUpdateRequestCodec.java:180)
+	at org.apache.solr.client.solrj.request.JavaBinUpdateRequestCodec$1.readIterator(JavaBinUpdateRequestCodec.java:136)
+	at org.apache.solr.common.util.JavaBinCodec.readObject(JavaBinCodec.java:306)
+	at org.apache.solr.common.util.JavaBinCodec.readVal(JavaBinCodec.java:251)
+	at org.apache.solr.client.solrj.request.JavaBinUpdateRequestCodec$1.readNamedList(JavaBinUpdateRequestCodec.java:122)
+	at org.apache.solr.common.util.JavaBinCodec.readObject(JavaBinCodec.java:271)
+	at org.apache.solr.common.util.JavaBinCodec.readVal(JavaBinCodec.java:251)
+	at org.apache.solr.common.util.JavaBinCodec.unmarshal(JavaBinCodec.java:173)
+	at org.apache.solr.client.solrj.request.JavaBinUpdateRequestCodec.unmarshal(JavaBinUpdateRequestCodec.java:187)
+	at org.apache.solr.handler.loader.JavabinLoader.parseAndLoadDocs(JavabinLoader.java:108)
+	at org.apache.solr.handler.loader.JavabinLoader.load(JavabinLoader.java:55)
+	at org.apache.solr.handler.UpdateRequestHandler$1.load(UpdateRequestHandler.java:97)
+	at org.apache.solr.handler.ContentStreamHandlerBase.handleRequestBody(ContentStreamHandlerBase.java:68)
+	at org.apache.solr.handler.RequestHandlerBase.handleRequest(RequestHandlerBase.java:173)
+	at org.apache.solr.core.SolrCore.execute(SolrCore.java:2477)
+	at org.apache.solr.servlet.HttpSolrCall.execute(HttpSolrCall.java:723)
+	at org.apache.solr.servlet.HttpSolrCall.call(HttpSolrCall.java:529)
+	at org.apache.solr.servlet.SolrDispatchFilter.doFilter(SolrDispatchFilter.java:361)
+	at org.apache.solr.servlet.SolrDispatchFilter.doFilter(SolrDispatchFilter.java:305)
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1691)
+	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:582)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:143)
+	at org.eclipse.jetty.security.SecurityHandler.handle(SecurityHandler.java:548)
+	at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:226)
+	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1180)
+	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:512)
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:185)
+	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1112)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141)
+	at org.eclipse.jetty.server.handler.ContextHandlerCollection.handle(ContextHandlerCollection.java:213)
+	at org.eclipse.jetty.server.handler.HandlerCollection.handle(HandlerCollection.java:119)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:134)
+	at org.eclipse.jetty.rewrite.handler.RewriteHandler.handle(RewriteHandler.java:335)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:134)
+	at org.eclipse.jetty.server.Server.handle(Server.java:534)
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:320)
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:251)
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:273)
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:95)
+	at org.eclipse.jetty.io.SelectChannelEndPoint$2.run(SelectChannelEndPoint.java:93)
+	at org.eclipse.jetty.util.thread.strategy.ExecuteProduceConsume.executeProduceConsume(ExecuteProduceConsume.java:303)
+	at org.eclipse.jetty.util.thread.strategy.ExecuteProduceConsume.produceConsume(ExecuteProduceConsume.java:148)
+	at org.eclipse.jetty.util.thread.strategy.ExecuteProduceConsume.run(ExecuteProduceConsume.java:136)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:671)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$2.run(QueuedThreadPool.java:589)
+	at java.lang.Thread.run(Thread.java:745)
+
+2017-09-16 18:51:32.884 INFO  (qtp1205044462-21) [   x:food_core] o.a.s.u.p.LogUpdateProcessorFactory [food_core]  webapp=/solr path=/update params={wt=javabin&version=2}{} 0 11
+2017-09-16 18:51:32.885 ERROR (qtp1205044462-21) [   x:food_core] o.a.s.h.RequestHandlerBase org.apache.solr.common.SolrException: ERROR: [doc=3f58c626-58a5-4700-8b15-0093e5816468] unknown field 'lat'
+	at org.apache.solr.update.DocumentBuilder.toDocument(DocumentBuilder.java:246)
+	at org.apache.solr.update.AddUpdateCommand.getLuceneDocument(AddUpdateCommand.java:102)
+	at org.apache.solr.update.DirectUpdateHandler2.updateDocument(DirectUpdateHandler2.java:922)
+	at org.apache.solr.update.DirectUpdateHandler2.updateDocOrDocValues(DirectUpdateHandler2.java:913)
+	at org.apache.solr.update.DirectUpdateHandler2.doNormalUpdate(DirectUpdateHandler2.java:302)
+	at org.apache.solr.update.DirectUpdateHandler2.addDoc0(DirectUpdateHandler2.java:239)
+	at org.apache.solr.update.DirectUpdateHandler2.addDoc(DirectUpdateHandler2.java:194)
+	at org.apache.solr.update.processor.RunUpdateProcessor.processAdd(RunUpdateProcessorFactory.java:67)
+	at org.apache.solr.update.processor.UpdateRequestProcessor.processAdd(UpdateRequestProcessor.java:55)
+	at org.apache.solr.update.processor.DistributedUpdateProcessor.doLocalAdd(DistributedUpdateProcessor.java:979)
+	at org.apache.solr.update.processor.DistributedUpdateProcessor.versionAdd(DistributedUpdateProcessor.java:1192)
+	at org.apache.solr.update.processor.DistributedUpdateProcessor.processAdd(DistributedUpdateProcessor.java:748)
+	at org.apache.solr.update.processor.LogUpdateProcessorFactory$LogUpdateProcessor.processAdd(LogUpdateProcessorFactory.java:103)
+	at org.apache.solr.handler.loader.JavabinLoader$1.update(JavabinLoader.java:98)
+	at org.apache.solr.client.solrj.request.JavaBinUpdateRequestCodec$1.readOuterMostDocIterator(JavaBinUpdateRequestCodec.java:180)
+	at org.apache.solr.client.solrj.request.JavaBinUpdateRequestCodec$1.readIterator(JavaBinUpdateRequestCodec.java:136)
+	at org.apache.solr.common.util.JavaBinCodec.readObject(JavaBinCodec.java:306)
+	at org.apache.solr.common.util.JavaBinCodec.readVal(JavaBinCodec.java:251)
+	at org.apache.solr.client.solrj.request.JavaBinUpdateRequestCodec$1.readNamedList(JavaBinUpdateRequestCodec.java:122)
+	at org.apache.solr.common.util.JavaBinCodec.readObject(JavaBinCodec.java:271)
+	at org.apache.solr.common.util.JavaBinCodec.readVal(JavaBinCodec.java:251)
+	at org.apache.solr.common.util.JavaBinCodec.unmarshal(JavaBinCodec.java:173)
+	at org.apache.solr.client.solrj.request.JavaBinUpdateRequestCodec.unmarshal(JavaBinUpdateRequestCodec.java:187)
+	at org.apache.solr.handler.loader.JavabinLoader.parseAndLoadDocs(JavabinLoader.java:108)
+	at org.apache.solr.handler.loader.JavabinLoader.load(JavabinLoader.java:55)
+	at org.apache.solr.handler.UpdateRequestHandler$1.load(UpdateRequestHandler.java:97)
+	at org.apache.solr.handler.ContentStreamHandlerBase.handleRequestBody(ContentStreamHandlerBase.java:68)
+	at org.apache.solr.handler.RequestHandlerBase.handleRequest(RequestHandlerBase.java:173)
+	at org.apache.solr.core.SolrCore.execute(SolrCore.java:2477)
+	at org.apache.solr.servlet.HttpSolrCall.execute(HttpSolrCall.java:723)
+	at org.apache.solr.servlet.HttpSolrCall.call(HttpSolrCall.java:529)
+	at org.apache.solr.servlet.SolrDispatchFilter.doFilter(SolrDispatchFilter.java:361)
+	at org.apache.solr.servlet.SolrDispatchFilter.doFilter(SolrDispatchFilter.java:305)
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1691)
+	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:582)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:143)
+	at org.eclipse.jetty.security.SecurityHandler.handle(SecurityHandler.java:548)
+	at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:226)
+	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1180)
+	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:512)
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:185)
+	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1112)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141)
+	at org.eclipse.jetty.server.handler.ContextHandlerCollection.handle(ContextHandlerCollection.java:213)
+	at org.eclipse.jetty.server.handler.HandlerCollection.handle(HandlerCollection.java:119)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:134)
+	at org.eclipse.jetty.rewrite.handler.RewriteHandler.handle(RewriteHandler.java:335)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:134)
+	at org.eclipse.jetty.server.Server.handle(Server.java:534)
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:320)
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:251)
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:273)
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:95)
+	at org.eclipse.jetty.io.SelectChannelEndPoint$2.run(SelectChannelEndPoint.java:93)
+	at org.eclipse.jetty.util.thread.strategy.ExecuteProduceConsume.executeProduceConsume(ExecuteProduceConsume.java:303)
+	at org.eclipse.jetty.util.thread.strategy.ExecuteProduceConsume.produceConsume(ExecuteProduceConsume.java:148)
+	at org.eclipse.jetty.util.thread.strategy.ExecuteProduceConsume.run(ExecuteProduceConsume.java:136)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:671)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$2.run(QueuedThreadPool.java:589)
+	at java.lang.Thread.run(Thread.java:745)
+
+2017-09-16 18:52:10.129 INFO  (qtp1205044462-18) [   x:food_core] o.a.s.u.p.LogUpdateProcessorFactory [food_core]  webapp=/solr path=/update params={wt=javabin&version=2}{} 0 0
+2017-09-16 18:52:10.130 ERROR (qtp1205044462-18) [   x:food_core] o.a.s.h.RequestHandlerBase org.apache.solr.common.SolrException: ERROR: [doc=3f58c626-58a5-4700-8b15-0093e5816468] unknown field 'lat'
+	at org.apache.solr.update.DocumentBuilder.toDocument(DocumentBuilder.java:246)
+	at org.apache.solr.update.AddUpdateCommand.getLuceneDocument(AddUpdateCommand.java:102)
+	at org.apache.solr.update.DirectUpdateHandler2.updateDocument(DirectUpdateHandler2.java:922)
+	at org.apache.solr.update.DirectUpdateHandler2.updateDocOrDocValues(DirectUpdateHandler2.java:913)
+	at org.apache.solr.update.DirectUpdateHandler2.doNormalUpdate(DirectUpdateHandler2.java:302)
+	at org.apache.solr.update.DirectUpdateHandler2.addDoc0(DirectUpdateHandler2.java:239)
+	at org.apache.solr.update.DirectUpdateHandler2.addDoc(DirectUpdateHandler2.java:194)
+	at org.apache.solr.update.processor.RunUpdateProcessor.processAdd(RunUpdateProcessorFactory.java:67)
+	at org.apache.solr.update.processor.UpdateRequestProcessor.processAdd(UpdateRequestProcessor.java:55)
+	at org.apache.solr.update.processor.DistributedUpdateProcessor.doLocalAdd(DistributedUpdateProcessor.java:979)
+	at org.apache.solr.update.processor.DistributedUpdateProcessor.versionAdd(DistributedUpdateProcessor.java:1192)
+	at org.apache.solr.update.processor.DistributedUpdateProcessor.processAdd(DistributedUpdateProcessor.java:748)
+	at org.apache.solr.update.processor.LogUpdateProcessorFactory$LogUpdateProcessor.processAdd(LogUpdateProcessorFactory.java:103)
+	at org.apache.solr.handler.loader.JavabinLoader$1.update(JavabinLoader.java:98)
+	at org.apache.solr.client.solrj.request.JavaBinUpdateRequestCodec$1.readOuterMostDocIterator(JavaBinUpdateRequestCodec.java:180)
+	at org.apache.solr.client.solrj.request.JavaBinUpdateRequestCodec$1.readIterator(JavaBinUpdateRequestCodec.java:136)
+	at org.apache.solr.common.util.JavaBinCodec.readObject(JavaBinCodec.java:306)
+	at org.apache.solr.common.util.JavaBinCodec.readVal(JavaBinCodec.java:251)
+	at org.apache.solr.client.solrj.request.JavaBinUpdateRequestCodec$1.readNamedList(JavaBinUpdateRequestCodec.java:122)
+	at org.apache.solr.common.util.JavaBinCodec.readObject(JavaBinCodec.java:271)
+	at org.apache.solr.common.util.JavaBinCodec.readVal(JavaBinCodec.java:251)
+	at org.apache.solr.common.util.JavaBinCodec.unmarshal(JavaBinCodec.java:173)
+	at org.apache.solr.client.solrj.request.JavaBinUpdateRequestCodec.unmarshal(JavaBinUpdateRequestCodec.java:187)
+	at org.apache.solr.handler.loader.JavabinLoader.parseAndLoadDocs(JavabinLoader.java:108)
+	at org.apache.solr.handler.loader.JavabinLoader.load(JavabinLoader.java:55)
+	at org.apache.solr.handler.UpdateRequestHandler$1.load(UpdateRequestHandler.java:97)
+	at org.apache.solr.handler.ContentStreamHandlerBase.handleRequestBody(ContentStreamHandlerBase.java:68)
+	at org.apache.solr.handler.RequestHandlerBase.handleRequest(RequestHandlerBase.java:173)
+	at org.apache.solr.core.SolrCore.execute(SolrCore.java:2477)
+	at org.apache.solr.servlet.HttpSolrCall.execute(HttpSolrCall.java:723)
+	at org.apache.solr.servlet.HttpSolrCall.call(HttpSolrCall.java:529)
+	at org.apache.solr.servlet.SolrDispatchFilter.doFilter(SolrDispatchFilter.java:361)
+	at org.apache.solr.servlet.SolrDispatchFilter.doFilter(SolrDispatchFilter.java:305)
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1691)
+	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:582)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:143)
+	at org.eclipse.jetty.security.SecurityHandler.handle(SecurityHandler.java:548)
+	at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:226)
+	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1180)
+	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:512)
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:185)
+	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1112)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141)
+	at org.eclipse.jetty.server.handler.ContextHandlerCollection.handle(ContextHandlerCollection.java:213)
+	at org.eclipse.jetty.server.handler.HandlerCollection.handle(HandlerCollection.java:119)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:134)
+	at org.eclipse.jetty.rewrite.handler.RewriteHandler.handle(RewriteHandler.java:335)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:134)
+	at org.eclipse.jetty.server.Server.handle(Server.java:534)
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:320)
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:251)
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:273)
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:95)
+	at org.eclipse.jetty.io.SelectChannelEndPoint$2.run(SelectChannelEndPoint.java:93)
+	at org.eclipse.jetty.util.thread.strategy.ExecuteProduceConsume.executeProduceConsume(ExecuteProduceConsume.java:303)
+	at org.eclipse.jetty.util.thread.strategy.ExecuteProduceConsume.produceConsume(ExecuteProduceConsume.java:148)
+	at org.eclipse.jetty.util.thread.strategy.ExecuteProduceConsume.run(ExecuteProduceConsume.java:136)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:671)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$2.run(QueuedThreadPool.java:589)
+	at java.lang.Thread.run(Thread.java:745)
+
+2017-09-16 18:52:10.136 INFO  (qtp1205044462-30) [   x:food_core] o.a.s.u.p.LogUpdateProcessorFactory [food_core]  webapp=/solr path=/update params={wt=javabin&version=2}{} 0 0
+2017-09-16 18:52:10.136 ERROR (qtp1205044462-30) [   x:food_core] o.a.s.h.RequestHandlerBase org.apache.solr.common.SolrException: ERROR: [doc=2a1a9760-fc87-4feb-80d6-b95815d1fa6d] unknown field 'lat'
+	at org.apache.solr.update.DocumentBuilder.toDocument(DocumentBuilder.java:246)
+	at org.apache.solr.update.AddUpdateCommand.getLuceneDocument(AddUpdateCommand.java:102)
+	at org.apache.solr.update.DirectUpdateHandler2.updateDocument(DirectUpdateHandler2.java:922)
+	at org.apache.solr.update.DirectUpdateHandler2.updateDocOrDocValues(DirectUpdateHandler2.java:913)
+	at org.apache.solr.update.DirectUpdateHandler2.doNormalUpdate(DirectUpdateHandler2.java:302)
+	at org.apache.solr.update.DirectUpdateHandler2.addDoc0(DirectUpdateHandler2.java:239)
+	at org.apache.solr.update.DirectUpdateHandler2.addDoc(DirectUpdateHandler2.java:194)
+	at org.apache.solr.update.processor.RunUpdateProcessor.processAdd(RunUpdateProcessorFactory.java:67)
+	at org.apache.solr.update.processor.UpdateRequestProcessor.processAdd(UpdateRequestProcessor.java:55)
+	at org.apache.solr.update.processor.DistributedUpdateProcessor.doLocalAdd(DistributedUpdateProcessor.java:979)
+	at org.apache.solr.update.processor.DistributedUpdateProcessor.versionAdd(DistributedUpdateProcessor.java:1192)
+	at org.apache.solr.update.processor.DistributedUpdateProcessor.processAdd(DistributedUpdateProcessor.java:748)
+	at org.apache.solr.update.processor.LogUpdateProcessorFactory$LogUpdateProcessor.processAdd(LogUpdateProcessorFactory.java:103)
+	at org.apache.solr.handler.loader.JavabinLoader$1.update(JavabinLoader.java:98)
+	at org.apache.solr.client.solrj.request.JavaBinUpdateRequestCodec$1.readOuterMostDocIterator(JavaBinUpdateRequestCodec.java:180)
+	at org.apache.solr.client.solrj.request.JavaBinUpdateRequestCodec$1.readIterator(JavaBinUpdateRequestCodec.java:136)
+	at org.apache.solr.common.util.JavaBinCodec.readObject(JavaBinCodec.java:306)
+	at org.apache.solr.common.util.JavaBinCodec.readVal(JavaBinCodec.java:251)
+	at org.apache.solr.client.solrj.request.JavaBinUpdateRequestCodec$1.readNamedList(JavaBinUpdateRequestCodec.java:122)
+	at org.apache.solr.common.util.JavaBinCodec.readObject(JavaBinCodec.java:271)
+	at org.apache.solr.common.util.JavaBinCodec.readVal(JavaBinCodec.java:251)
+	at org.apache.solr.common.util.JavaBinCodec.unmarshal(JavaBinCodec.java:173)
+	at org.apache.solr.client.solrj.request.JavaBinUpdateRequestCodec.unmarshal(JavaBinUpdateRequestCodec.java:187)
+	at org.apache.solr.handler.loader.JavabinLoader.parseAndLoadDocs(JavabinLoader.java:108)
+	at org.apache.solr.handler.loader.JavabinLoader.load(JavabinLoader.java:55)
+	at org.apache.solr.handler.UpdateRequestHandler$1.load(UpdateRequestHandler.java:97)
+	at org.apache.solr.handler.ContentStreamHandlerBase.handleRequestBody(ContentStreamHandlerBase.java:68)
+	at org.apache.solr.handler.RequestHandlerBase.handleRequest(RequestHandlerBase.java:173)
+	at org.apache.solr.core.SolrCore.execute(SolrCore.java:2477)
+	at org.apache.solr.servlet.HttpSolrCall.execute(HttpSolrCall.java:723)
+	at org.apache.solr.servlet.HttpSolrCall.call(HttpSolrCall.java:529)
+	at org.apache.solr.servlet.SolrDispatchFilter.doFilter(SolrDispatchFilter.java:361)
+	at org.apache.solr.servlet.SolrDispatchFilter.doFilter(SolrDispatchFilter.java:305)
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1691)
+	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:582)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:143)
+	at org.eclipse.jetty.security.SecurityHandler.handle(SecurityHandler.java:548)
+	at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:226)
+	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1180)
+	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:512)
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:185)
+	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1112)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141)
+	at org.eclipse.jetty.server.handler.ContextHandlerCollection.handle(ContextHandlerCollection.java:213)
+	at org.eclipse.jetty.server.handler.HandlerCollection.handle(HandlerCollection.java:119)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:134)
+	at org.eclipse.jetty.rewrite.handler.RewriteHandler.handle(RewriteHandler.java:335)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:134)
+	at org.eclipse.jetty.server.Server.handle(Server.java:534)
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:320)
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:251)
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:273)
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:95)
+	at org.eclipse.jetty.io.SelectChannelEndPoint$2.run(SelectChannelEndPoint.java:93)
+	at org.eclipse.jetty.util.thread.strategy.ExecuteProduceConsume.executeProduceConsume(ExecuteProduceConsume.java:303)
+	at org.eclipse.jetty.util.thread.strategy.ExecuteProduceConsume.produceConsume(ExecuteProduceConsume.java:148)
+	at org.eclipse.jetty.util.thread.strategy.ExecuteProduceConsume.run(ExecuteProduceConsume.java:136)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:671)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$2.run(QueuedThreadPool.java:589)
+	at java.lang.Thread.run(Thread.java:745)
+
+2017-09-16 18:52:29.588 INFO  (qtp1205044462-18) [   x:food_core] o.a.s.u.p.LogUpdateProcessorFactory [food_core]  webapp=/solr path=/update params={wt=javabin&version=2}{} 0 0
+2017-09-16 18:52:29.588 ERROR (qtp1205044462-18) [   x:food_core] o.a.s.h.RequestHandlerBase org.apache.solr.common.SolrException: ERROR: [doc=e4227ee2-1b69-4c31-98b7-d4442a00defe] unknown field 'lat'
+	at org.apache.solr.update.DocumentBuilder.toDocument(DocumentBuilder.java:246)
+	at org.apache.solr.update.AddUpdateCommand.getLuceneDocument(AddUpdateCommand.java:102)
+	at org.apache.solr.update.DirectUpdateHandler2.updateDocument(DirectUpdateHandler2.java:922)
+	at org.apache.solr.update.DirectUpdateHandler2.updateDocOrDocValues(DirectUpdateHandler2.java:913)
+	at org.apache.solr.update.DirectUpdateHandler2.doNormalUpdate(DirectUpdateHandler2.java:302)
+	at org.apache.solr.update.DirectUpdateHandler2.addDoc0(DirectUpdateHandler2.java:239)
+	at org.apache.solr.update.DirectUpdateHandler2.addDoc(DirectUpdateHandler2.java:194)
+	at org.apache.solr.update.processor.RunUpdateProcessor.processAdd(RunUpdateProcessorFactory.java:67)
+	at org.apache.solr.update.processor.UpdateRequestProcessor.processAdd(UpdateRequestProcessor.java:55)
+	at org.apache.solr.update.processor.DistributedUpdateProcessor.doLocalAdd(DistributedUpdateProcessor.java:979)
+	at org.apache.solr.update.processor.DistributedUpdateProcessor.versionAdd(DistributedUpdateProcessor.java:1192)
+	at org.apache.solr.update.processor.DistributedUpdateProcessor.processAdd(DistributedUpdateProcessor.java:748)
+	at org.apache.solr.update.processor.LogUpdateProcessorFactory$LogUpdateProcessor.processAdd(LogUpdateProcessorFactory.java:103)
+	at org.apache.solr.handler.loader.JavabinLoader$1.update(JavabinLoader.java:98)
+	at org.apache.solr.client.solrj.request.JavaBinUpdateRequestCodec$1.readOuterMostDocIterator(JavaBinUpdateRequestCodec.java:180)
+	at org.apache.solr.client.solrj.request.JavaBinUpdateRequestCodec$1.readIterator(JavaBinUpdateRequestCodec.java:136)
+	at org.apache.solr.common.util.JavaBinCodec.readObject(JavaBinCodec.java:306)
+	at org.apache.solr.common.util.JavaBinCodec.readVal(JavaBinCodec.java:251)
+	at org.apache.solr.client.solrj.request.JavaBinUpdateRequestCodec$1.readNamedList(JavaBinUpdateRequestCodec.java:122)
+	at org.apache.solr.common.util.JavaBinCodec.readObject(JavaBinCodec.java:271)
+	at org.apache.solr.common.util.JavaBinCodec.readVal(JavaBinCodec.java:251)
+	at org.apache.solr.common.util.JavaBinCodec.unmarshal(JavaBinCodec.java:173)
+	at org.apache.solr.client.solrj.request.JavaBinUpdateRequestCodec.unmarshal(JavaBinUpdateRequestCodec.java:187)
+	at org.apache.solr.handler.loader.JavabinLoader.parseAndLoadDocs(JavabinLoader.java:108)
+	at org.apache.solr.handler.loader.JavabinLoader.load(JavabinLoader.java:55)
+	at org.apache.solr.handler.UpdateRequestHandler$1.load(UpdateRequestHandler.java:97)
+	at org.apache.solr.handler.ContentStreamHandlerBase.handleRequestBody(ContentStreamHandlerBase.java:68)
+	at org.apache.solr.handler.RequestHandlerBase.handleRequest(RequestHandlerBase.java:173)
+	at org.apache.solr.core.SolrCore.execute(SolrCore.java:2477)
+	at org.apache.solr.servlet.HttpSolrCall.execute(HttpSolrCall.java:723)
+	at org.apache.solr.servlet.HttpSolrCall.call(HttpSolrCall.java:529)
+	at org.apache.solr.servlet.SolrDispatchFilter.doFilter(SolrDispatchFilter.java:361)
+	at org.apache.solr.servlet.SolrDispatchFilter.doFilter(SolrDispatchFilter.java:305)
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1691)
+	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:582)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:143)
+	at org.eclipse.jetty.security.SecurityHandler.handle(SecurityHandler.java:548)
+	at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:226)
+	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1180)
+	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:512)
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:185)
+	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1112)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141)
+	at org.eclipse.jetty.server.handler.ContextHandlerCollection.handle(ContextHandlerCollection.java:213)
+	at org.eclipse.jetty.server.handler.HandlerCollection.handle(HandlerCollection.java:119)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:134)
+	at org.eclipse.jetty.rewrite.handler.RewriteHandler.handle(RewriteHandler.java:335)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:134)
+	at org.eclipse.jetty.server.Server.handle(Server.java:534)
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:320)
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:251)
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:273)
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:95)
+	at org.eclipse.jetty.io.SelectChannelEndPoint$2.run(SelectChannelEndPoint.java:93)
+	at org.eclipse.jetty.util.thread.strategy.ExecuteProduceConsume.executeProduceConsume(ExecuteProduceConsume.java:303)
+	at org.eclipse.jetty.util.thread.strategy.ExecuteProduceConsume.produceConsume(ExecuteProduceConsume.java:148)
+	at org.eclipse.jetty.util.thread.strategy.ExecuteProduceConsume.run(ExecuteProduceConsume.java:136)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:671)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$2.run(QueuedThreadPool.java:589)
+	at java.lang.Thread.run(Thread.java:745)
+
+2017-09-16 19:02:01.765 INFO  (ShutdownMonitor) [   ] o.a.s.c.CoreContainer Shutting down CoreContainer instance=388357135
+2017-09-16 19:02:01.766 INFO  (ShutdownMonitor) [   ] o.a.s.m.SolrMetricManager Closing metric reporters for: solr.node
+2017-09-16 19:02:01.766 INFO  (ShutdownMonitor) [   ] o.a.s.m.SolrMetricManager Closing metric reporters for: solr.jvm
+2017-09-16 19:02:01.766 INFO  (ShutdownMonitor) [   ] o.a.s.m.SolrMetricManager Closing metric reporters for: solr.jetty
+2017-09-16 19:02:01.767 INFO  (coreCloseExecutor-16-thread-1) [   x:food_core] o.a.s.c.SolrCore [food_core]  CLOSING SolrCore org.apache.solr.core.SolrCore@4a5a3cee
+2017-09-16 19:02:01.772 INFO  (coreCloseExecutor-16-thread-1) [   x:food_core] o.a.s.m.SolrMetricManager Closing metric reporters for: solr.core.food_core
