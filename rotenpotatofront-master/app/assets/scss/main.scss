@@ -1,0 +1,56 @@
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+#map {
+  width: 100vw;
+  height: 100vh;
+}
+
+#bottomScroll {
+  width: 75vw;
+  margin: 2vw;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#innerScroll {
+  width: 80%;
+  display: inline-block;
+  float: left;
+  height: 68px;
+  line-height: 68px;
+  white-space: nowrap;
+}
+
+#textScroll {
+  width: 20%;
+  margin: auto;
+  display: inline-block;
+  float: right;
+  text-align: center;
+}
+
+#search {
+  width: 20vw;
+  margin: 2vw;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+#searchInside {
+  width: 18vw;
+  margin: auto;
+}
+
+#slider {
+  width: 95%;
+  margin: auto;
+}
